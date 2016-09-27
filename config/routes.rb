@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: "registrations"}
+
+  devise_scope :user do
+      get 'registrations/profile_page' => 'registrations#profile_page'
+    end
+
   resources :concerts
 
   # The priority is based upon order of creation: first created -> highest priority.
