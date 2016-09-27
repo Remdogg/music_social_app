@@ -1,4 +1,4 @@
-development:
+\development:
   adapter: postgresql
   encoding: unicode
   database: music_social_app_development
