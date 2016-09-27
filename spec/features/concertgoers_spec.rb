@@ -8,6 +8,7 @@ RSpec.feature "Concertgoers", type: :feature do
        visit '/concertgoers/index'
      end
      Then 'I can see a list of users' do
+       save_and_open_page
        expect(page).to have_content('remy@gmail.com')
      end
    end
