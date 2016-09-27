@@ -10,13 +10,16 @@
   <!-- flash messages -->
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <%= link_to "Sign Up", new_user_registration_path %>
-  <%= link_to "Sign In", new_user_session_path %>
-  <%if !current_user.nil?%>
-        <br>
-      <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+
+  <% if !user_signed_in? %>
+    <%= link_to "Sign Up", new_user_registration_path %>
+    <%= link_to "Sign In", new_user_session_path %>
   <%end%>
 
+  <%if !current_user.nil?%>
+       <br>
+     <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+ <%end%>
 <%= yield %>
 
 </body>
