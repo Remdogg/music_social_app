@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
+
   get '/concertgoers/index'
 
-  devise_for :users
+
+  devise_for :users, controllers: {registrations: "registrations"}
+
+  devise_scope :user do
+      get 'registrations/profile_page' => 'registrations#profile_page'
+    end
+
+
   resources :concerts
 
 
