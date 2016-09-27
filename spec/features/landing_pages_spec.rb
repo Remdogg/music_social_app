@@ -11,4 +11,16 @@ RSpec.feature "LandingPages", type: :feature do
      end
    end
  end
+    # Testing for sign in and sign up button
+ context 'Going to a website and being welcomed' do
+   Steps 'click sign up button' do
+     Given 'Give that I am on the landing page' do
+     visit '/'
+   end
+     Then 'I can see sign Up or Sign In' do
+     expect(page).to have_content('Sign Up')
+     click_link 'Sign Up'
+   end
+   end
+ end
 end
