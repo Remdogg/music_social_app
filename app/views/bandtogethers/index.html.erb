@@ -21,7 +21,7 @@
         <td><%= bandtogether.start_time %></td>
         <td><%= bandtogether.end_time %></td>
         <td><%= bandtogether.description %></td>
-        <td><%= bandtogether.concert %></td>
+        <td><%= bandtogether.concert.title %></td>
         <td><%= link_to 'Show', bandtogether %></td>
         <td><%= link_to 'Edit', edit_bandtogether_path(bandtogether) %></td>
         <td><%= link_to 'Destroy', bandtogether, method: :delete, data: { confirm: 'Are you sure?' } %></td>

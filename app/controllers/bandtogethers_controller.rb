@@ -10,15 +10,26 @@ class BandtogethersController < ApplicationController
   # GET /bandtogethers/1
   # GET /bandtogethers/1.json
   def show
+    
+
   end
 
   # GET /bandtogethers/new
   def new
     @bandtogether = Bandtogether.new
-  end
+    @concerts_for_select = Concert.all.map do |concert|
+    [concert.title, concert.id]
+    end
+    @bandtogether.concert = Concert.first
 
+  end
   # GET /bandtogethers/1/edit
   def edit
+    @bandtogether = Bandtogether.new
+    @concerts_for_select = Concert.all.map do |concert|
+    [concert.title, concert.id]
+    end
+    @bandtogether.concert = Concert.first
   end
 
   # POST /bandtogethers

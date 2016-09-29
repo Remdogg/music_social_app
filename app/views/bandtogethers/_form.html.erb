@@ -28,9 +28,9 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :concert_id %><br>
-    <%= f.text_field :concert_id %>
+    <%= select(:bandtogether, :concert_id, @concerts_for_select) %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
