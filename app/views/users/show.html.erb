@@ -1,5 +1,8 @@
+<section class="stats">
+   <%= render 'shared/stats' %>
+ </section>
 
-<%= render '/components/follow_button', :user => User.find_by_email(params[:id]) %>
+<%= render 'components/follow_button' if user_signed_in? %>
 
 <br>
 
