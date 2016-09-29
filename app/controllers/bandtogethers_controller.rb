@@ -10,7 +10,7 @@ class BandtogethersController < ApplicationController
   # GET /bandtogethers/1
   # GET /bandtogethers/1.json
   def show
-    
+
 
   end
 
@@ -25,11 +25,15 @@ class BandtogethersController < ApplicationController
   end
   # GET /bandtogethers/1/edit
   def edit
-    @bandtogether = Bandtogether.new
-    @concerts_for_select = Concert.all.map do |concert|
-    [concert.title, concert.id]
+      @bandtogether = Bandtogether.find(params[:id])
+    if @bandtogether.organizer_id == current_user.id
+      @concerts_for_select = Concert.all.map do |concert|
+        [concert.title, concert.id]
+      end
+      @bandtogether.concert = Concert.first
+    else
+      redirect_to '/bandtogethers'
     end
-    @bandtogether.concert = Concert.first
   end
 
   # POST /bandtogethers
@@ -67,11 +71,16 @@ class BandtogethersController < ApplicationController
   # DELETE /bandtogethers/1
   # DELETE /bandtogethers/1.json
   def destroy
-    @bandtogether.destroy
-    respond_to do |format|
-      format.html { redirect_to bandtogethers_url, notice: 'Bandtogether was successfully destroyed.' }
-      format.json { head :no_content }
+    if @bandtogether.organizer_id == current_user.id
+      @bandtogether.destroy
+      respond_to do |format|
+        format.html { redirect_to bandtogethers_url, notice: 'Bandtogether was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to '/bandtogethers'
     end
+    
   end
 
   private
