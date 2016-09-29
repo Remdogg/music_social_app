@@ -3,14 +3,20 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: "registrations"}
 
+
   devise_scope :user do
       get 'registrations/profile_page' => 'registrations#profile_page'
     end
 
+  resources :relationships, only: [:create, :destroy]
 
   resources :concerts
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
 
 
