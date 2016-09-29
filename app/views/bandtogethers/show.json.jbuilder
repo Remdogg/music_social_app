@@ -1,0 +1,1 @@
+json.partial! "bandtogethers/bandtogether", bandtogether: @bandtogether

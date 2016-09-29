@@ -6,11 +6,10 @@ def after_sign_up_path_for(resource)
 end
 
 def after_update_path_for(resource)
-  '/registrations/profile_page'
+  
 end
 
-def profile_page
-end
+
 
 
   private

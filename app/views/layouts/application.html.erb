@@ -17,8 +17,8 @@
   <%end%>
 
   <%if !current_user.nil?%>
-       <br>
-     <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      <a href="/users/<%=current_user.id%>">My Profile</a>
  <%end%>
 <%= yield %>
 
