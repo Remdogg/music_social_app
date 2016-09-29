@@ -39,7 +39,25 @@ RSpec.feature "ProfilePages", type: :feature do
         expect(page).to have_content('kdjgkfjsgjfgskjfds')
         expect(page).to have_content('kdjhfsdhfskh')
       end
+      Then 'I can create a concert from my profile page' do
+        fill_in("Title", :with => 'Tswizzle')
+        select('2016', :from => 'concert_start_1i')
+        select('January', :from => 'concert_start_2i')
+        select('1', :from => 'concert_start_3i')
+        select('00', :from => 'concert_start_4i')
+        select('00', :from => 'concert_start_5i')
+        #concert end time
+        select('2016', :from => 'concert_end_1i')
+        select('January', :from => 'concert_end_2i')
+        select('1', :from => 'concert_end_3i')
+        select('00', :from => 'concert_end_4i')
+        select('00', :from => 'concert_end_5i')
+        #artist
+        fill_in("Artist", :with => 'Tswizzle')
+        fill_in("City", :with => 'State')
+        fill_in("State", :with => 'CA')
 
+      end
     end
   end
 

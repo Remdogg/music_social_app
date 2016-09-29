@@ -1,0 +1,1 @@
+json.array! @bandtogethers, partial: 'bandtogethers/bandtogether', as: :bandtogether

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @bandtogether.title %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @bandtogether.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @bandtogether.end_time %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bandtogether.description %>
+</p>
+
+<p>
+  <strong>Concert:</strong>
+  <%= @bandtogether.concert %>
+</p>
+
+<%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
+<%= link_to 'Back', bandtogethers_path %>

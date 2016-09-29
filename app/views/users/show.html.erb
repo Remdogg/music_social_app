@@ -29,3 +29,9 @@
 
 <label>Favorite Artists</label>
 <h2><%=@user.artists%></h2>
+
+<% if @user == current_user %>
+  <%= link_to 'Edit', edit_user_registration_path %>
+  <br>
+
+<% end %>
