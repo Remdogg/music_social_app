@@ -19,6 +19,8 @@ RSpec.feature "SignUpPages", type: :feature do
         visit '/users/sign_up'
       end
       Then 'I can fill in the form' do
+        fill_in 'user_first_name', with: 'Taylor'
+        fill_in 'user_last_name', with: 'swift'
         fill_in 'user_email', with: 'test@email.com'
         fill_in 'user_password', with: 'test123'
         fill_in 'user_password_confirmation', with: 'test123'

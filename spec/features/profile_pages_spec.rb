@@ -7,6 +7,8 @@ RSpec.feature "ProfilePages", type: :feature do
         visit '/users/sign_up'
       end
       And 'I can signup' do
+        fill_in("user_first_name", :with => 'talyor')
+        fill_in('user_last_name', :with => 'swift')
         fill_in("user_email", :with => 'star@star.com')
         fill_in('user_password', :with => 'password')
         fill_in('user_password_confirmation', :with => 'password')
