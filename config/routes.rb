@@ -2,9 +2,7 @@ Rails.application.routes.draw do
 
 
   resources :bandtogethers
-  devise_for :users, controllers: {registrations: "registrations"}
-
-
+  devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
 
 
   resources :concerts
