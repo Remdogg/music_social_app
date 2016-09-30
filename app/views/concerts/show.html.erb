@@ -32,3 +32,11 @@
 
 <%= link_to 'Edit', edit_concert_path(@concert) %> |
 <%= link_to 'Back', concerts_path %>
+
+<h1>Bandtogethers</h1>
+
+<p>
+  <ul>
+    <%= render partial: "bandtogether", collection: @concert.bandtogethers %>
+  </ul>
+</p>
