@@ -1,0 +1,27 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1><%= @user.first_name %></h1>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <table>
+      <tbody>
+          <% if @users.any? %>
+          <% @users = User.find(params[:id])%>
+          <% @users.followers.ids.each do |id| %>
+          <% @name = User.find(id) %>
+          <tr>
+            <td><%= @name.email %></td>
+          </tr>
+          <% end %>
+        <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>

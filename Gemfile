@@ -35,6 +35,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # gem devise
 gem 'devise'
+# gem for bootstrap
+gem 'bootstrap-generators'
+
 
 #facebook validation
 gem 'omniauth-facebook'
