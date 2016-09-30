@@ -1,0 +1,37 @@
+<%= form_for(@bandtogether) do |f| %>
+  <% if @bandtogether.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bandtogether.errors.count, "error") %> prohibited this bandtogether from being saved:</h2>
+
+      <ul>
+      <% @bandtogether.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.text_field :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br>
+    <%= f.text_field :end_time %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= select(:bandtogether, :concert_id, @concerts_for_select) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

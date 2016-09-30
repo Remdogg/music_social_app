@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, controllers: {registrations: "registrations"}
+  resources :bandtogethers
+  devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
 
-
-  devise_scope :user do
-      get 'registrations/profile_page' => 'registrations#profile_page'
-    end
 
   resources :relationships, only: [:create, :destroy]
 
