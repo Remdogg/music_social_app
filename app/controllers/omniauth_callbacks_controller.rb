@@ -16,7 +16,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 
-
-
-
 end
