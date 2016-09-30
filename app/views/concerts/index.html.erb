@@ -38,21 +38,3 @@
 <%= link_to 'New Concert', new_concert_path %>
 
 <br>
-
-  <% if user_signed_in? %>
-    <% @user ||= current_user %>
-      <div class="stats">
-
-        <strong id="following" class="stat">
-          <%= @user.following.count %>
-        </strong>
-        following
-
-
-        <strong id="followers" class="stat">
-          <%= @user.followers.count %>
-        </strong>
-        followers
-
-</div>
-<% end %>

@@ -41,7 +41,9 @@ class BandtogethersController < ApplicationController
   def create
     @bandtogether = Bandtogether.new(bandtogether_params)
     @bandtogether.organizer_id = current_user.id
-
+    @concerts_for_select = Concert.all.map do |concert|
+      [concert.title, concert.id]
+    end
 
     respond_to do |format|
       if @bandtogether.save
@@ -80,7 +82,7 @@ class BandtogethersController < ApplicationController
     else
       redirect_to '/bandtogethers'
     end
-    
+
   end
 
   private
