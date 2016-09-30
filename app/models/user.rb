@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :bandtogethers_as_member, :class_name => 'Bandtogether', :foreign_key => 'member_id'
   has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id'
 
+  attr_accessor :current_password
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -17,7 +18,5 @@ class User < ActiveRecord::Base
     end
   end
 
-
-
-
+  
 end
