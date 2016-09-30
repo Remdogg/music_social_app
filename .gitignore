@@ -61,4 +61,4 @@ config/database.yml
 # Ignore the schema between environments
 db/schema.rb
 
-initializer/devise.rb
+initializers/devise.rb
