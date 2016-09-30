@@ -5,9 +5,18 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
 
 
+  resources :relationships, only: [:create, :destroy]
+
   resources :concerts
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  get 'relationships', to: 'relationships#create'
+
 
 
 

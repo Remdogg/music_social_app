@@ -21,7 +21,7 @@ RSpec.feature "SignUpPages", type: :feature do
       Then 'I can fill in the form' do
         fill_in 'user_first_name', with: 'Taylor'
         fill_in 'user_last_name', with: 'swift'
-        fill_in 'user_email', with: 'test@email.com'
+        fill_in 'user_email', with: 'bobby@email.com'
         fill_in 'user_password', with: 'test123'
         fill_in 'user_password_confirmation', with: 'test123'
         click_button 'Sign up'
@@ -33,7 +33,7 @@ RSpec.feature "SignUpPages", type: :feature do
       end
       Then 'I can sign in' do
         click_link 'Sign In'
-        fill_in 'user_email', with: 'test@email.com'
+        fill_in 'user_email', with: 'bobby@email.com'
         fill_in 'user_password', with: 'test123'
         click_button 'Log in'
         expect(page).to have_content('Signed in successfully')
