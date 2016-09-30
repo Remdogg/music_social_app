@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @title = "Following"
     @user  = User.find(params[:id])
     @users = User.all
-    render 'show_follow'
+    render 'show_following'
   end
 
   def followers
