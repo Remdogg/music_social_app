@@ -17,7 +17,7 @@
           <% @users.following.ids.each do |id| %>
           <% @name = User.find(id) %>
           <tr>
-            <td><%= @name.email %></td>
+            <td><a href="/users/<%=@name.id%>"><%= @name.email %></a></td>
           </tr>
           <% end %>
         <% end %>

@@ -1,22 +1,40 @@
+
+
+
+
+<br>
+<div class="row">
+<div class=".col-sm-6">
+
+
+</div>
+</div>
+
+
+<h1><%=@user.first_name%> <%=@user.last_name%></h1>
+
+<h3><%=@user.city%>, <%=@user.state%></h3>
+
+
+
 <section class="stats">
    <%= render 'shared/stats' %>
  </section>
-
 <%= render 'components/follow_button' if user_signed_in? %>
 
 <br>
 
 
-<h1> My Profile</h1>
-
+<% if @user == current_user %>
+  <%= link_to 'Edit Profile', edit_user_registration_path %>
+<% end %>
+<br>
+<br>
 <label>Email</label>
 <h2><%=@user.email%></h2>
 
-<label>First Name</label>
-<h2><%=@user.first_name%></h2>
 
-<label>Last Name</label>
-<h2><%=@user.last_name%></h2>
+<h2></h2>
 
 <label>Age</label>
 <h2><%=@user.age%></h2>
@@ -24,11 +42,7 @@
 <label>Gender</label>
 <h2><%=@user.gender%></h2>
 
-<label>City</label>
-<h2><%=@user.city%></h2>
 
-<label>state</label>
-<h2><%=@user.state%></h2>
 
 <label>Postal Code</label>
 <h2><%=@user.postal_code%></h2>
@@ -40,17 +54,13 @@
 <h2><%=@user.artists%></h2>
 
 <% if @user == current_user %>
-  <%= link_to 'Edit', edit_user_registration_path %>
-  <br>
-
-
   <%= render '/bandtogethers/form' %>
 <% end %>
 
 
 <h1> <%=@user.first_name%>'s Bandtogethers</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
