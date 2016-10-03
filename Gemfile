@@ -41,6 +41,7 @@ gem 'bootstrap-generators'
 
 #facebook validation
 gem 'omniauth-facebook'
+gem 'textacular', '~> 3.0'
 
 
 group :development, :test do

@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
-
-
   before_action :current_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+
+  def index
+     if params[:search].nil? || params[:search].empty?
+       @users = User.all
+     else
+       @users = User.search(params[:search])
+     end
+   end
 
   def following
     @title = "Following"
@@ -27,10 +33,6 @@ class UsersController < ApplicationController
     @concerts_for_select = Concert.all.map do |concert|
       [concert.title, concert.id]
     end
-  end
-
-  def index
-    @users = User.all
   end
 
 end

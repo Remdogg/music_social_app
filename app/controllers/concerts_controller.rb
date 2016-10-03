@@ -3,9 +3,14 @@ class ConcertsController < ApplicationController
 
   # GET /concerts
   # GET /concerts.json
+
   def index
-    @concerts = Concert.all
-  end
+     if params[:search].nil? || params[:search].empty?
+       @concerts = Concert.all
+     else
+       @concerts = Concert.fuzzy_search(params[:search])
+     end
+   end
 
   # GET /concerts/1
   # GET /concerts/1.json
