@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
-
-
   before_action :current_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+
+  def index
+     if params[:search].nil? || params[:search].empty?
+       @users = User.all
+     else
+       @users = User.search(params[:search])
+     end
+   end
 
   def following
     @title = "Following"
@@ -28,14 +34,6 @@ class UsersController < ApplicationController
       @concerts_for_select = Concert.all.map do |concert|
         [concert.title, concert.id]
       end
-    else
-      redirect_to '/'
-    end
-  end
-
-  def index
-    if user_signed_in?
-      @users = User.all
     else
       redirect_to '/'
     end

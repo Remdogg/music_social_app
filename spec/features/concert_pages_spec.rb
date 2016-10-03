@@ -45,7 +45,6 @@ RSpec.feature "ConcertPages", type: :feature do
           fill_in 'concert_city', with: 'San Diego'
           fill_in 'concert_state', with: 'CA'
           click_button 'Create Concert'
-          save_and_open_page
           expect(page).to have_content('T Swift - September 2016')
           expect(page).to have_content('Taylor Swift')
           expect(page).to have_content('San Diego')
@@ -83,7 +82,6 @@ RSpec.feature "ConcertPages", type: :feature do
       end
       Then 'I go to a concert page' do
         visit '/concerts'
-        save_and_open_page
         click_link 'Show'
         click_link 'Beast mode'
         expect(page).to have_content('Beast mode')
