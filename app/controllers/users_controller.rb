@@ -2,12 +2,16 @@ class UsersController < ApplicationController
   before_action :current_user, only: [:index, :edit, :update, :destroy, :following, :followers]
 
   def index
-     if params[:search].nil? || params[:search].empty?
-       @users = User.all
-     else
-       @users = User.search(params[:search])
-     end
-   end
+    if user_signed_in?
+       if params[:search].nil? || params[:search].empty?
+         @users = User.all
+       else
+         @users = User.search(params[:search])
+       end
+    else
+      redirect_to '/'
+    end
+  end
 
   def following
     @title = "Following"
