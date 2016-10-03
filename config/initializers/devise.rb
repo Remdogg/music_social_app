@@ -37,7 +37,7 @@ Devise.setup do |config|
   # config.authentication_keys = [:email]
 
   config.omniauth :facebook, "526748387523387", "202266d68546d4e1aa9c8c6e802d82c8",
-   callback_url: "http://localhost:3000/users/auth/facebook/callback"
+   callback_url: "http://localhost:3000/users/auth/facebook/callback", scope: 'email', info_fields: 'email, first_name, last_name'
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
