@@ -35,8 +35,15 @@
 
 <h1>Bandtogethers</h1>
 
+
+
+
 <p>
   <ul>
-    <%= render partial: "bandtogether", collection: @concert.bandtogethers %>
+    <% @concert.bandtogethers.each do |bandtogether| %>
+        <li>
+            <%= link_to bandtogether.title, bandtogether %>
+        </li>
+    <% end %>
   </ul>
 </p>
