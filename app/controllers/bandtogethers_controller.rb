@@ -16,12 +16,15 @@ class BandtogethersController < ApplicationController
 
   # GET /bandtogethers/new
   def new
-    @bandtogether = Bandtogether.new
-    @concerts_for_select = Concert.all.map do |concert|
-    [concert.title, concert.id]
+    if user_signed_in?
+      @bandtogether = Bandtogether.new
+      @concerts_for_select = Concert.all.map do |concert|
+      [concert.title, concert.id]
+      end
+      @bandtogether.concert = Concert.first
+    else
+      redirect_to '/'
     end
-    @bandtogether.concert = Concert.first
-
   end
   # GET /bandtogethers/1/edit
   def edit

@@ -25,15 +25,18 @@
         <td><%= bandtogether.concert.title %></td>
         <td><%= bandtogether.organizer.first_name %></td>
         <td><%= link_to 'Show', bandtogether %></td>
+        <% if user_signed_in? %>
         <% if bandtogether.organizer_id == current_user.id%>
           <td><%= link_to 'Edit', edit_bandtogether_path(bandtogether) %></td>
           <td><%= link_to 'Destroy', bandtogether, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if user_signed_in? %>
 <%= link_to 'New Bandtogether', new_bandtogether_path %>
+<% end %>
