@@ -11,9 +11,9 @@
 </div>
 
 
-<h1><%=@user.first_name%> <%=@user.last_name%></h1>
+<h2><%=@user.first_name%> <%=@user.last_name%></h2> <%= image_tag(current_user.avatar.url(:thumb)) %>
 
-<h3><%=@user.city%>, <%=@user.state%></h3>
+<p><%=@user.city%>, <%=@user.state%></p>
 
 
 
@@ -31,34 +31,37 @@
 <br>
 <br>
 <label>Email</label>
-<h2><%=@user.email%></h2>
+<p><%=@user.email%></p>
 
 
-<h2></h2>
+<p></p>
 
 <label>Age</label>
-<h2><%=@user.age%></h2>
+<p><%=@user.age%></p>
 
 <label>Gender</label>
-<h2><%=@user.gender%></h2>
+<p><%=@user.gender%></p>
 
 
 
 <label>Postal Code</label>
-<h2><%=@user.postal_code%></h2>
+<p><%=@user.postal_code%></p>
 
 <label>About Me</label>
-<h2><%=@user.about%></h2>
+<p><%=@user.about%></p>
 
 <label>Favorite Artists</label>
-<h2><%=@user.artists%></h2>
+<p><%=@user.artists%></p>
+
+<hr>
 
 <% if @user == current_user %>
   <%= render '/bandtogethers/form' %>
 <% end %>
 
 
-<h1> <%=@user.first_name%>'s Bandtogethers</h1>
+
+<p> <%=@user.first_name%>'s Bandtogethers</p>
 
 <table class="table">
   <thead>

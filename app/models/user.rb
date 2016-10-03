@@ -15,6 +15,11 @@ devise :database_authenticatable, :registerable, :recoverable, :rememberable, :t
          belongs_to :bandtogethers_as_member, :class_name => 'Bandtogether', :foreign_key => 'member_id'
          has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id'
 
+#paperclip
+has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+
 # validations
 
   validates :first_name, length: { minimum: 2 }
