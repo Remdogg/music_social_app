@@ -28,11 +28,12 @@ RSpec.feature "SignUpPages", type: :feature do
         expect(page).to have_content('You have signed up successfully')
       end
       Then 'I can log out' do
+        click_link 'Taylor'
         click_link 'Logout'
         expect(page).to have_content('Signed out successfully')
       end
       Then 'I can sign in' do
-        click_link 'Sign In'
+        click_link 'Login'
         fill_in 'user_email', with: 'bobby@email.com'
         fill_in 'user_password', with: 'test123'
         click_button 'Log in'

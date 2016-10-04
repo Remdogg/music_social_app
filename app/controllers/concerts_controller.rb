@@ -16,11 +16,6 @@ class ConcertsController < ApplicationController
   # GET /concerts/1.json
   def show
     @user = current_user
-    # @bandtogether set to bandtogether on current page
-    @bandtogether = Bandtogether.find(params[:id])
-    # @membership set to membership matching the bandtogether on current page and mapping all members
-    @membership = Membership.where(bandtogether_id: @bandtogether.id).map {|membership| membership.user_id}
-
 
   end
 

@@ -6,6 +6,14 @@ RSpec.feature "Users", type: :feature do
      Given 'I am on users page' do
       user = User.create! :email => 'remy@gmail.com', :password => 'Remy68', :password_confirmation => 'Remy68', :first_name => 'Remy', :last_name => 'Tan', :age => '27', :gender => 'Male', :city => 'Garden Grove', :state =>"CA", :postal_code => '90680', :about => 'Cool', :artists => 'TayTay'
       user = User.create! :email => 'jack@email.com', :password => 'password', :password_confirmation => 'password', :first_name => 'Jack', :last_name => 'Fern', :age => '27', :gender => 'Male', :city => 'San Diego', :state =>"CA", :postal_code => '92122', :about => 'Cool AF', :artists => 'TaySwizz'
+      Then 'I can sign in' do
+        visit '/'
+        click_link('Login')
+         fill_in 'user_email', with: 'remy@gmail.com'
+         fill_in 'user_password', with: 'Remy68'
+         click_button 'Log in'
+         expect(page).to have_content('Signed in successfully')
+      end
         visit '/users'
      end
      Then 'I can see a list of users' do
@@ -22,14 +30,14 @@ RSpec.feature "Users", type: :feature do
       expect(page).to have_content('Cool')
       expect(page).to have_content('TayTay')
      end
-     Then 'I can sign in' do
-       click_link('Sign In')
-
-        fill_in 'user_email', with: 'remy@gmail.com'
-        fill_in 'user_password', with: 'Remy68'
-        click_button 'Log in'
-        expect(page).to have_content('Signed in successfully')
-     end
+    #  Then 'I can sign in' do
+    #    click_link('Login')
+     #
+    #     fill_in 'user_email', with: 'remy@gmail.com'
+    #     fill_in 'user_password', with: 'Remy68'
+    #     click_button 'Log in'
+    #     expect(page).to have_content('Signed in successfully')
+    #  end
      Then 'I can show users' do
       visit '/users'
       end
@@ -56,7 +64,7 @@ RSpec.feature "Users", type: :feature do
         click_link 'Logout'
       end
       Then 'I can sign in' do
-        click_link('Sign In')
+        click_link('Login')
          fill_in 'user_email', with: 'jack@email.com'
          fill_in 'user_password', with: 'password'
          click_button 'Log in'
