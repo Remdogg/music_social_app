@@ -11,17 +11,29 @@ class BandtogethersController < ApplicationController
   # GET /bandtogethers/1.json
   def show
 
+    if user_signed_in?
+      @user = current_user
+      # @bandtogether set to bandtogether on current page
+      @bandtogether = Bandtogether.find(params[:id])
+      # @membership set to membership matching the bandtogether on current page and mapping all members
 
+      @membership = Membership.where(bandtogether_id: @bandtogether.id).map {|membership| membership.user_id}
+    else
+       redirect_to '/users/sign_up'
+    end
   end
 
   # GET /bandtogethers/new
   def new
-    @bandtogether = Bandtogether.new
-    @concerts_for_select = Concert.all.map do |concert|
-    [concert.title, concert.id]
+    if user_signed_in?
+      @bandtogether = Bandtogether.new
+      @concerts_for_select = Concert.all.map do |concert|
+      [concert.title, concert.id]
+      end
+      @bandtogether.concert = Concert.first
+    else
+      redirect_to '/'
     end
-    @bandtogether.concert = Concert.first
-
   end
   # GET /bandtogethers/1/edit
   def edit
@@ -84,6 +96,8 @@ class BandtogethersController < ApplicationController
     end
 
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

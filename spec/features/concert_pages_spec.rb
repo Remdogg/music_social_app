@@ -32,7 +32,7 @@ RSpec.feature "ConcertPages", type: :feature do
         expect(page).to have_content('Signed out successfully')
       end
       Then 'I can sign in' do
-        click_link 'Sign In'
+        click_link 'Login'
         fill_in 'user_email', with: 'taylor@email.com'
         fill_in 'user_password', with: 'test123'
         click_button 'Log in'
@@ -51,7 +51,7 @@ RSpec.feature "ConcertPages", type: :feature do
           expect(page).to have_content('CA')
         end
       Then 'I can create a bandtogether after going to my profile page' do
-        click_link('My Profile')
+        click_link('View Profile')
         fill_in 'bandtogether_title', with: 'Beast mode'
         fill_in 'bandtogether_start_time', with: '1pm'
         fill_in 'bandtogether_end_time', with: '10pm'

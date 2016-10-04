@@ -4,16 +4,16 @@ class User < ActiveRecord::Base
 devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 # Relationship
 
-         has_many :active_relationships,  class_name:  "Relationship",
-                                          foreign_key: "follower_id",
-                                          dependent:   :destroy
-         has_many :passive_relationships, class_name:  "Relationship",
-                                          foreign_key: "followed_id",
-                                          dependent:   :destroy
-         has_many :following, through: :active_relationships,  source: :followed
-         has_many :followers, through: :passive_relationships, source: :follower
-         belongs_to :bandtogethers_as_member, :class_name => 'Bandtogether', :foreign_key => 'member_id'
-         has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id'
+has_many :active_relationships,  class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
+has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
+has_many :following, through: :active_relationships,  source: :followed
+has_many :followers, through: :passive_relationships, source: :follower
+
+
+
+has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id'
+has_many :bandtogethers, through: :memberships
+has_many :memberships
 
 # validations
 
@@ -56,6 +56,7 @@ devise :database_authenticatable, :registerable, :recoverable, :rememberable, :t
       # user.image = auth.info.image # assuming the user model has an image
     end
   end
+
 
 
 end

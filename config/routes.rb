@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   get 'relationships', to: 'relationships#create'
 
-
-
+  get '/bandtogethers/:id/join(.:format)' => 'users#join'
+  get '/bandtogethers/:id/leave(.:format)' => 'users#leave'
 
 
 
