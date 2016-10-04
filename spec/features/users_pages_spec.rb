@@ -12,7 +12,6 @@ RSpec.feature "Users", type: :feature do
          fill_in 'user_email', with: 'remy@gmail.com'
          fill_in 'user_password', with: 'Remy68'
          click_button 'Log in'
-         expect(page).to have_content('Signed in successfully')
       end
         visit '/users'
      end
@@ -68,7 +67,7 @@ RSpec.feature "Users", type: :feature do
          fill_in 'user_email', with: 'jack@email.com'
          fill_in 'user_password', with: 'password'
          click_button 'Log in'
-         expect(page).to have_content('Signed in successfully')
+
       end
       Then 'I can show users' do
           visit '/users'

@@ -16,7 +16,7 @@ RSpec.feature "Dashboards", type: :feature do
         click_button 'Log in'
       end
       And 'I am redirected to my dashboard page' do
-        expect(page).to have_content('Dashboard')
+        expect(page).to have_content('Star Twinkle')
       end
     end
   end

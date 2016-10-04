@@ -36,9 +36,10 @@ RSpec.feature "ConcertPages", type: :feature do
         fill_in 'user_email', with: 'taylor@email.com'
         fill_in 'user_password', with: 'test123'
         click_button 'Log in'
-        expect(page).to have_content('Signed in successfully')
+
       end
         Then 'I can create a concert' do
+          visit '/concerts'
           click_link 'New Concert'
           fill_in 'concert_title', with: 'T Swift - September 2016'
           fill_in 'concert_artist', with: 'Taylor Swift'
@@ -51,7 +52,7 @@ RSpec.feature "ConcertPages", type: :feature do
           expect(page).to have_content('CA')
         end
       Then 'I can create a bandtogether after going to my profile page' do
-        click_link('View Profile')
+        visit '/'
         fill_in 'bandtogether_title', with: 'Beast mode'
         fill_in 'bandtogether_start_time', with: '1pm'
         fill_in 'bandtogether_end_time', with: '10pm'
