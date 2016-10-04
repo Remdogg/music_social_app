@@ -107,6 +107,6 @@ class BandtogethersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bandtogether_params
-      params.require(:bandtogether).permit(:title, :start_time, :end_time, :description, :concert_id)
+      params.require(:bandtogether).permit(:title, :start_time, :end_time, :description, :concert_id, :bandtogether_avatar)
     end
 end

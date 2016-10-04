@@ -30,7 +30,7 @@ end
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :first_name, :last_name, :age, :gender, :city, :state, :postal_code, :about, :artists
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :first_name, :last_name, :age, :gender, :city, :state, :postal_code, :about, :artists, :avatar
     #re add in image after paperclip
     # :image
     )
