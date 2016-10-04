@@ -16,7 +16,7 @@ devise :database_authenticatable, :registerable, :recoverable, :rememberable, :t
          has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id'
 
 #paperclip
-has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+has_attached_file :avatar, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/missing.png"
 validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
