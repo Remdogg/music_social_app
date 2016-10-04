@@ -24,6 +24,12 @@
   <strong>Concert:</strong>
   <%= @bandtogether.concert.title %>
 </p>
+
+<%= Membership.where(user_id: "1").map {|membership| membership.bandtogether_id}%>
+<%= render 'components/join_button' %>
+
+
+
 <% if @bandtogether.organizer == current_user %>
 <%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
 <% end %>

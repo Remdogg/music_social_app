@@ -17,6 +17,37 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def join
+    @user = current_user
+    # @bandtogether set to bandtogether on current page
+    @bandtogether = Bandtogether.find(params[:id])
+    # @membership set to membership matching the bandtogether on current page and mapping all members
+    @membership = Membership.where(bandtogether_id: @bandtogether.id).map {|membership| membership.bandtogether_id}
+    # if the current user's id is NOT in the membership array, add it and redirect to bandtogether page.
+    if !@membership.include?(@user.id)
+      @user.bandtogethers << @bandtogether
+      redirect_to "/bandtogethers/" + @bandtogether.id.to_s
+    # if the current user's id IS in the membership array,  redirect to bandtogether page.
+    else
+      redirect_to "/bandtogethers/" + @bandtogether.id.to_s
+    end
+  end
+
+  def leave
+    @user = current_user
+    # @bandtogether set to bandtogether on current page
+    @bandtogether = Bandtogether.find(params[:id])
+    # @membership set to membership matching the bandtogether on current page and mapping all members
+    @membership = Membership.where(bandtogether_id: @bandtogether.id).map {|membership| membership.bandtogether_id}
+    # if the current user's id is NOT in the membership array, add it and redirect to bandtogether page.
+    if @membership.include?(@user.id)
+      @user.bandtogethers.delete(@bandtogether)
+      redirect_to "/bandtogethers/" + @bandtogether.id.to_s
+    # if the current user's id IS in the membership array,  redirect to bandtogether page.
+    else
+      redirect_to "/bandtogethers/" + @bandtogether.id.to_s
+    end
+  end
 
   def show
     if user_signed_in?

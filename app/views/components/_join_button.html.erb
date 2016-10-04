@@ -1,0 +1,6 @@
+
+<% if !@membership.include?(@user.id) %>
+  <%= render '/users/join' %>
+<% else %>
+  <%= render 'users/leave' %>
+<% end %>
