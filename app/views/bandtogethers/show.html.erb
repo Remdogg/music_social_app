@@ -44,19 +44,19 @@
     <%end%>
 </p>
 
-
+<br>
 <% if @bandtogether.organizer == current_user %>
 <%else%>
   <%= render 'components/join_button' %>
 <% end %>
 
+<br>
 <%= commontator_thread(@bandtogether) %>
-
+<br>
 
 <% if @bandtogether.organizer == current_user %>
 <%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
 <% end %>
-
 
 <br>
 
