@@ -16,6 +16,10 @@ class ConcertsController < ApplicationController
   # GET /concerts/1.json
   def show
     @user = current_user
+    @bandtogether = Bandtogether.new
+
+    @bandtogether.concert = Concert.find(params[:id])
+
 
   end
 
