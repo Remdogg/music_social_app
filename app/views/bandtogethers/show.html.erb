@@ -1,29 +1,30 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @bandtogether.title %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @bandtogether.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @bandtogether.end_time %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @bandtogether.description %>
-</p>
-
-<p>
-  <strong>Concert:</strong>
-  <%= @bandtogether.concert.title %>
-</p>
-
-<%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
-<%= link_to 'Back', bandtogethers_path %>
+<div class="container">
+  <div class="col-md-6">
+    <p>
+      <strong>Title:</strong>
+      <%= @bandtogether.title %>
+    </p>
+    <p>
+      <strong>Start time:</strong>
+      <%= @bandtogether.start_time %>
+    </p>
+    <p>
+      <strong>End time:</strong>
+      <%= @bandtogether.end_time %>
+    </p>
+    <p>
+      <strong>Description:</strong>
+      <%= @bandtogether.description %>
+    </p>
+    <p>
+      <strong>Concert:</strong>
+      <%= @bandtogether.concert.title %>
+    </p>
+    <%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
+    <%= link_to 'Back', bandtogethers_path %>
+  </div>
+  <div class="col-md-6">
+    <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium)) %>
+  </div>
+</div>

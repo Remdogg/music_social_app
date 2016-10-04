@@ -12,5 +12,8 @@ class Bandtogether < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :concert
 
+  has_attached_file :bandtogether_avatar, :styles => { :medium => "300x300>", :thumb => "50x50#"}, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :bandtogether_avatar, :content_type => /\Aimage\/.*\Z/
+
 
 end

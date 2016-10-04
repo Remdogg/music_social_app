@@ -8,25 +8,24 @@
 <table class = "table">
   <thead>
       <tr>
-
+        <th></th>
         <th>Name</th>
         <th>
           Location
         </th>
-        <th>
-
-        </th>
+        <th> Artists</th>
       </tr>
   </thead>
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td><a href='users/<%=user.id%>'><%= user.first_name%> <%= user.last_name%></a> <%= image_tag(user.avatar.url(:thumb)) %>
+      <td><%= image_tag(user.avatar.url(:thumb)) %></td>
+      <td><a href='users/<%=user.id%>'><%= user.first_name%> <%= user.last_name%></a>
       </td>
       <td>
         <%=user.city%>, <%=user.state%>
       </td>
-
+      <td><%=user.artists%></td>
     </tr>
   <% end %>
   </tbody>

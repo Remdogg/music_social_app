@@ -5,6 +5,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Start time</th>
       <th>End time</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @bandtogethers.each do |bandtogether| %>
       <tr>
+        <td><%= image_tag(bandtogether.bandtogether_avatar.url(:thumb)) %></td>
         <td><%= bandtogether.title %></td>
         <td><%= bandtogether.start_time %></td>
         <td><%= bandtogether.end_time %></td>
@@ -25,9 +27,11 @@
         <td><%= bandtogether.concert.title %></td>
         <td><%= bandtogether.organizer.first_name %></td>
         <td><%= link_to 'Show', bandtogether %></td>
-        <% if bandtogether.organizer_id == current_user.id%>
-          <td><%= link_to 'Edit', edit_bandtogether_path(bandtogether) %></td>
-          <td><%= link_to 'Destroy', bandtogether, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <% if bandtogether.organizer_id == current_user.id%>
+            <td><%= link_to 'Edit', edit_bandtogether_path(bandtogether) %></td>
+            <td><%= link_to 'Destroy', bandtogether, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
