@@ -68,7 +68,8 @@ RSpec.feature "ProfilePages", type: :feature do
       Then 'I go back to my prof page' do
         click_link('View Profile')
       end
-      Then 'I can create a bandtogether from my profile page' do
+      Then 'I can create a bandtogether from my dashboard page' do
+        visit '/'
         fill_in("Title", :with => 'Tswizzle')
         fill_in("Start time", :with => '4pm')
         fill_in("End time", :with => 'never')

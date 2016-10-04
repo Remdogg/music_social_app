@@ -29,6 +29,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+
+  authenticated do
+    root :to => 'dashboard#index', as: :authenticated
+  end
+
   root 'concerts#index'
 
   # Example of regular route:

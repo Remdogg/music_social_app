@@ -32,6 +32,7 @@
             <li class="active"><a href="/">Home</a></li>
           <% if user_signed_in? %>
             <li><%= link_to('Users', users_path)%></li>
+            <li><%= link_to('Concerts', concerts_path)%></li>
           <% end %>
             <li><%= link_to('BandTogethers', bandtogethers_path)%></li>
           </ul>
@@ -53,6 +54,11 @@
 
               <% if user_signed_in? %>
               <!-- <ul class="nav navbar-nav navbar-right"> -->
+
+              <li>
+                <%= image_tag(current_user.avatar.url(:thumb)) %>
+              </li>
+
 
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=current_user.first_name%> <span class="caret"></span></a>

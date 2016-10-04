@@ -1,0 +1,45 @@
+
+<div class="dash-name">
+  <h2><%=current_user.first_name%> <%=current_user.last_name%> </h2>
+  <h3><%=current_user.city%>, <%=current_user.state%></h3>
+</div>
+
+<hr>
+
+<h3>Upcoming Bandtogethers</h3>
+
+<p>
+  <ul>
+    <% @bandtogethers.each do |bandtogether| %>
+      <div class="listing">
+        <li>
+          <h4><%= link_to bandtogether.title, bandtogether %></h4>
+          <h6><%=link_to bandtogether.concert.title, bandtogether.concert%></h6>
+          <strong><%= bandtogether.start_time%><h6></strong>
+          Attending:
+          <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %>
+          <br>
+          <br>
+
+        </li>
+      </div>
+    <% end %>
+  </ul>
+</p>
+
+<hr>
+
+<h3>Following</h3>
+      <% if @users.any? %>
+      <% @user.following.ids.each do |id| %>
+      <% @name = User.find(id) %>
+      <div class="listing">
+        <li> <%= image_tag(@name.avatar.url(:thumb)) %>
+        <a href="/users/<%=@name.id%>"><%= @name.first_name %> <%= @name.last_name %></a> </li>
+      </div>
+      <% end %>
+    <% end %>
+
+    <hr>
+
+  <%= render '/bandtogethers/form' %>

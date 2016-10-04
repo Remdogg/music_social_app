@@ -42,7 +42,10 @@ gem 'commontator'
 
 #facebook validation
 gem 'omniauth-facebook'
+# gem for searching
 gem 'textacular', '~> 3.0'
+# gem for paperclip
+gem 'paperclip'
 
 
 group :development, :test do

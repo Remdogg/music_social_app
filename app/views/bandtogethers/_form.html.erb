@@ -10,6 +10,12 @@
       </ul>
     </div>
   <% end %>
+  <br>
+
+  <div class="form-group">
+    <%= f.label :bandtogether_avatar %>
+    <%= f.file_field :bandtogether_avatar %>
+  </div>
 
   <div class="field">
     <%= f.label :title %><br>
@@ -27,6 +33,8 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+
+
   <div class="field">
     <%= select(:bandtogether, :concert_id, @concerts_for_select) %>
   </div>

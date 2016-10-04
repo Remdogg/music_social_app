@@ -37,7 +37,7 @@ RSpec.feature "SignUpPages", type: :feature do
         fill_in 'user_email', with: 'bobby@email.com'
         fill_in 'user_password', with: 'test123'
         click_button 'Log in'
-        expect(page).to have_content('Signed in successfully')
+
       end
       Then 'I can log out' do
         click_link 'Logout'
