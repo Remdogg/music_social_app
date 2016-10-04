@@ -25,5 +25,28 @@
   <%= @bandtogether.concert.title %>
 </p>
 
+<p>
+  <strong>Going:</strong>
+  <%= Membership.where(bandtogether_id: @bandtogether.id).count %>
+</p>
+<p>
+  <%@bandtogether.members.each do |member| %>
+    <li><a href="/users/<%=member.id%>"> <%=member.first_name%> <%=member.last_name%></a></li>
+    <%end%>
+</p>
+
+
+<% if @bandtogether.organizer == current_user %>
+<%else%>
+  <%= render 'components/join_button' %>
+<% end %>
+
+
+
+<% if @bandtogether.organizer == current_user %>
 <%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
+<% end %>
+
+<br>
+
 <%= link_to 'Back', bandtogethers_path %>

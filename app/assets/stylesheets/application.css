@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+
+.listing > li {
+  list-style: none;
+}
