@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-<div class="container">
+
+
   <div class="col-md-6">
     <p>
       <strong>Title:</strong>
@@ -21,10 +22,51 @@
       <strong>Concert:</strong>
       <%= @bandtogether.concert.title %>
     </p>
-    <%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
-    <%= link_to 'Back', bandtogethers_path %>
-  </div>
-  <div class="col-md-6">
-    <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium)) %>
-  </div>
+
+
+
+
+
+
+
+
+<p>
+  <strong>Going:</strong>
+  <!-- Adding one to the membership count to include organizer -->
+  <%= Membership.where(bandtogether_id: @bandtogether.id).count + 1%>
+</p>
+<p>
+  <li>
+    <!--show oranizer name in list because they are automatically going whether they want to or not -->
+    <a href="/users/<%= @bandtogether.organizer.id %>">
+      <%= @bandtogether.organizer.first_name %>
+      <%= @bandtogether.organizer.last_name %>
+    </a> (Organizer)
+  </li>
+  <!--list each member by first name +last name -->
+  <%@bandtogether.members.each do |member| %>
+    <li><a href="/users/<%=member.id%>"> <%=member.first_name%> <%=member.last_name%></a></li>
+    <%end%>
+</p>
+
+
+<% if @bandtogether.organizer == current_user %>
+<%else%>
+  <%= render 'components/join_button' %>
+<% end %>
+
+<% if @bandtogether.organizer == current_user %>
+<%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
+<% end %>
+
+
+<br>
+
+<%= link_to 'Back', bandtogethers_path %>
+
+</div>
+
+
+<div class="col-md-6">
+  <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium)) %>
 </div>

@@ -15,6 +15,8 @@ class ConcertsController < ApplicationController
   # GET /concerts/1
   # GET /concerts/1.json
   def show
+    @user = current_user
+
   end
 
   # GET /concerts/new

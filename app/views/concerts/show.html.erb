@@ -33,7 +33,7 @@
 <%= link_to 'Edit', edit_concert_path(@concert) %> |
 <%= link_to 'Back', concerts_path %>
 
-<h1>Bandtogethers</h1>
+<h3>Bandtogethers for <%=@concert.title%></h3>
 
 
 
@@ -41,9 +41,17 @@
 <p>
   <ul>
     <% @concert.bandtogethers.each do |bandtogether| %>
+      <div class="listing">
         <li>
-            <%= link_to bandtogether.title, bandtogether %>
+          <h4><%= link_to bandtogether.title, bandtogether %></h4>
+          <strong><%= bandtogether.start_time%><h6></strong>
+          Attending:
+          <%= Membership.where(bandtogether_id: bandtogether.id).count %>
+          <br>
+          <br>
+
         </li>
+      </div>
     <% end %>
   </ul>
 </p>

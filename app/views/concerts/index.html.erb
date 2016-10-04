@@ -30,8 +30,11 @@
         <td><%= concert.city %></td>
         <td><%= concert.state %></td>
         <td><%= link_to 'Show', concert %></td>
+        <% if user_signed_in? %>
+        <!-- TODO add admin ability to create/edit/destroy concerts -->
         <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
         <td><%= link_to 'Destroy', concert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

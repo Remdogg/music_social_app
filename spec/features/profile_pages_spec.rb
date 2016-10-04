@@ -40,9 +40,11 @@ RSpec.feature "ProfilePages", type: :feature do
         expect(page).to have_content('92020')
         expect(page).to have_content('kdjgkfjsgjfgskjfds')
         expect(page).to have_content('kdjhfsdhfskh')
+
       end
       Then "I am on the new concert page" do
         visit '/concerts/new'
+
       end
       Then 'I can create a concert' do
       fill_in('Title', :with => 'Tswizzle')
@@ -64,15 +66,16 @@ RSpec.feature "ProfilePages", type: :feature do
       click_button('Create Concert')
       end
       Then 'I go back to my prof page' do
-        click_link('My Profile')
+        click_link('View Profile')
       end
       Then 'I can create a bandtogether from my profile page' do
         fill_in("Title", :with => 'Tswizzle')
         fill_in("Start time", :with => '4pm')
         fill_in("End time", :with => 'never')
         fill_in("Description", :with => 'go hard or go home')
-        select('Tswizzle', :from => 'bandtogether_concert_id')
+        # select('Tswizzle', :from => 'bandtogether_concert_id')
         click_button('Create Bandtogether')
+
       end
     end
   end

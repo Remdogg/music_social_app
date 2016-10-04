@@ -10,9 +10,7 @@
       <tr>
         <th></th>
         <th>Name</th>
-        <th>
-          Location
-        </th>
+        <th>Location</th>
         <th> Artists</th>
       </tr>
   </thead>
@@ -25,7 +23,12 @@
       <td>
         <%=user.city%>, <%=user.state%>
       </td>
+
       <td><%=user.artists%></td>
+
+      <td>
+         <!-- <%= render 'shared/stats' %> -->
+      </td>
     </tr>
   <% end %>
   </tbody>
