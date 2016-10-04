@@ -27,9 +27,18 @@
 
 <p>
   <strong>Going:</strong>
-  <%= Membership.where(bandtogether_id: @bandtogether.id).count %>
+  <!-- Adding one to the membership count to include organizer -->
+  <%= Membership.where(bandtogether_id: @bandtogether.id).count + 1%>
 </p>
 <p>
+  <li>
+    <!--show oranizer name in list because they are automatically going whether they want to or not -->
+    <a href="/users/<%= @bandtogether.organizer.id %>">
+      <%= @bandtogether.organizer.first_name %>
+      <%= @bandtogether.organizer.last_name %>
+    </a> (Organizer)
+  </li>
+  <!--list each member by first name +last name -->
   <%@bandtogether.members.each do |member| %>
     <li><a href="/users/<%=member.id%>"> <%=member.first_name%> <%=member.last_name%></a></li>
     <%end%>

@@ -25,7 +25,8 @@
         <td><%= bandtogether.description %></td>
         <td><%= bandtogether.concert.title %></td>
         <td><%= bandtogether.organizer.first_name %></td>
-        <td><%= Membership.where(bandtogether_id: bandtogether.id).count %>
+        <!-- Adding one to the membership count to include organizer -->
+        <td><%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %>
         <td><%= link_to 'Show', bandtogether %></td>
         <% if user_signed_in? %>
         <% if bandtogether.organizer_id == current_user.id%>
