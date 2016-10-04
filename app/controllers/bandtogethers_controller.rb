@@ -15,7 +15,6 @@ class BandtogethersController < ApplicationController
     @bandtogether = Bandtogether.find(params[:id])
     # @membership set to membership matching the bandtogether on current page and mapping all members
     @membership = Membership.where(bandtogether_id: @bandtogether.id).map {|membership| membership.user_id}
-
   end
 
   # GET /bandtogethers/new
