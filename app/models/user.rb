@@ -9,14 +9,17 @@ has_many :passive_relationships, class_name:  "Relationship", foreign_key: "foll
 has_many :following, through: :active_relationships,  source: :followed
 has_many :followers, through: :passive_relationships, source: :follower
 
+#commontator
+acts_as_commontator
+acts_as_commontable
 
 
+# membership/organizer relationship
 has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id'
 has_many :bandtogethers, through: :memberships
 has_many :memberships
 
 # validations
-
   validates :first_name, length: { minimum: 2 }
   validates :last_name, length: { minimum: 2 }
 

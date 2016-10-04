@@ -10,13 +10,12 @@ class BandtogethersController < ApplicationController
   # GET /bandtogethers/1
   # GET /bandtogethers/1.json
   def show
-
     if user_signed_in?
       @user = current_user
       # @bandtogether set to bandtogether on current page
       @bandtogether = Bandtogether.find(params[:id])
-      # @membership set to membership matching the bandtogether on current page and mapping all members
 
+      # @membership set to membership matching the bandtogether on current page and mapping all members
       @membership = Membership.where(bandtogether_id: @bandtogether.id).map {|membership| membership.user_id}
     else
        redirect_to '/users/sign_up'

@@ -37,7 +37,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # gem for bootstrap
 gem 'bootstrap-generators'
-
+# gem for commontator
+gem 'commontator'
 
 #facebook validation
 gem 'omniauth-facebook'

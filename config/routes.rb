@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
+  mount Commontator::Engine => '/commontator'
+
+
   get 'relationships', to: 'relationships#create'
 
   get '/bandtogethers/:id/join(.:format)' => 'users#join'

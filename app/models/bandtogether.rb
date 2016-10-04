@@ -4,6 +4,11 @@ class Bandtogether < ActiveRecord::Base
   has_many :members, through: :memberships, source: :user
   has_many :memberships
 
+  #commontator gem
+  acts_as_commontable
+  acts_as_commontator
+
+
   validates :title, length: { minimum: 2 }
   validates :description, length: { minimum: 2, maximum: 500 }
 
