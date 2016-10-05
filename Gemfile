@@ -45,7 +45,12 @@ gem 'omniauth-facebook'
 gem 'textacular', '~> 3.0'
 # gem for paperclip
 gem 'paperclip'
-
+#gems for mailboxer
+gem 'mailboxer'
+gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
+gem 'chosen-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

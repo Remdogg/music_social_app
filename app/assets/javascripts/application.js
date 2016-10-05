@@ -15,3 +15,5 @@
 
 //= require bootstrap
 //= require_tree .
+//= require chosen-jquery
+//= require messages

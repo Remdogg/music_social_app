@@ -54,6 +54,7 @@
 
               <% if user_signed_in? %>
               <!-- <ul class="nav navbar-nav navbar-right"> -->
+              <li><%= link_to 'Inbox', conversations_path %></li>
 
               <li>
                 <%= image_tag(current_user.avatar.url(:thumb)) %>

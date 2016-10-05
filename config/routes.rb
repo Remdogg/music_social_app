@@ -1,6 +1,23 @@
 Rails.application.routes.draw do
 
 
+
+
+#mailboxer
+  resources :conversations, only: [:index, :show, :destroy] do
+    collection do
+      delete :empty_trash
+    end
+    member do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+  end
+
+
+  resources :messages, only: [:new, :create]
+
   resources :bandtogethers
   devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
 
