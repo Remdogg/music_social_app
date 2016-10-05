@@ -7,7 +7,10 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :concerts
+  resources :concerts do
+      # GET /concerts/:concert_id/map_locations
+      get 'map_location'
+    end
 
   resources :users do
     member do

@@ -46,6 +46,10 @@ gem 'omniauth-facebook'
 gem 'textacular', '~> 3.0'
 # gem for paperclip
 gem 'paperclip'
+#google maps
+gem 'geocoder'
+gem 'gmaps4rails'
+
 
 
 group :development, :test do

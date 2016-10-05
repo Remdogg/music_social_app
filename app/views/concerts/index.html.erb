@@ -8,10 +8,10 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Concerts</h1>
+<h1>Upcoming Concerts</h1>
 <form action="/" method="get">
  <input type="text" name="search">
- <input type="submit" value="Search">
+ <input type="submit" value="Search" >
 </form>
 
 <table class="table">
@@ -51,5 +51,22 @@
 <br>
 
 <%= link_to 'New Concert', new_concert_path %>
+
+
+<div id="map">Google map will appear here...</div>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({
+    provider: {},
+    internal: {id: 'map'}
+  },
+  function() {
+    markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(8);
+  }
+);
+</script>
 
 <br>

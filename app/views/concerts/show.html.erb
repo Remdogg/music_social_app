@@ -21,6 +21,11 @@
 </p>
 
 <p>
+  <strong>Address:</strong>
+  <%= @concert.address %>
+</p>
+
+<p>
   <strong>City:</strong>
   <%= @concert.city %>
 </p>
@@ -97,3 +102,19 @@
     <% end %>
   </ul>
 </p>
+
+<div id="map">Google map will appear here...</div>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({
+    provider: {},
+    internal: {id: 'map'}
+  },
+  function() {
+    markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(12);
+  }
+);
+</script>
