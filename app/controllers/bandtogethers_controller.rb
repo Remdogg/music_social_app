@@ -1,5 +1,9 @@
 class BandtogethersController < ApplicationController
+  # to include get_unread_count
+  include ApplicationHelper
   before_action :set_bandtogether, only: [:show, :edit, :update, :destroy]
+  #counts unread emails in current user inbox
+  before_action :get_unread_count
 
   # GET /bandtogethers
   # GET /bandtogethers.json
@@ -10,7 +14,6 @@ class BandtogethersController < ApplicationController
   # GET /bandtogethers/1
   # GET /bandtogethers/1.json
   def show
-
     if user_signed_in?
       @user = current_user
       # @bandtogether set to bandtogether on current page

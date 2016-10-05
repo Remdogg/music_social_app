@@ -1,8 +1,12 @@
 class ConversationsController < ApplicationController
+  # to include get_unread_count
+  include ApplicationHelper
   before_action :authenticate_user!
   before_action :get_mailbox
   before_action :get_conversation, except: [:index, :empty_trash]
   before_action :get_box, only: [:index]
+  #counts unread emails in current user inbox
+  before_action :get_unread_count
 
  def index
    if @box.eql? "inbox"
@@ -50,6 +54,10 @@ def mark_as_read
   flash[:success] = 'The conversation was marked as read.'
   redirect_to conversations_path
 end
+
+
+
+
 
 
 

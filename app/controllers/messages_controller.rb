@@ -1,8 +1,12 @@
 class MessagesController < ApplicationController
-
+  # to include get_unread_count
+  include ApplicationHelper
   before_action :authenticate_user!
+  #counts unread emails in current user inbox
+  before_action :get_unread_count
 
   def new
+    @chosen_recipient = User.find_by(id: params[:to].to_i) if params[:to]
   end
 
   def create
