@@ -20,6 +20,10 @@ class ConversationsController < ApplicationController
  end
 
  def show
+   if @conversation.is_unread?(current_user)
+    @conversation.mark_as_read(current_user)
+    @messages_count = @messages_count - 1
+    end
  end
 
  def reply
@@ -52,6 +56,12 @@ end
 def mark_as_read
   @conversation.mark_as_read(current_user)
   flash[:success] = 'The conversation was marked as read.'
+  redirect_to conversations_path
+end
+
+def mark_as_unread
+  @conversation.mark_as_unread(current_user)
+  flash[:success] = 'The conversation was marked as unread.'
   redirect_to conversations_path
 end
 

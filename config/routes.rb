@@ -12,8 +12,10 @@ Rails.application.routes.draw do
       post :reply
       post :restore
       post :mark_as_read
+      post :mark_as_unread
     end
   end
+
 
 
   resources :messages, only: [:new, :create]
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
 
   get '/bandtogethers/:id/join(.:format)' => 'users#join'
   get '/bandtogethers/:id/leave(.:format)' => 'users#leave'
-
+  get '/bandtogethers/:id/invite' => 'bandtogethers#invite'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

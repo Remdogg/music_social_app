@@ -100,6 +100,9 @@ class BandtogethersController < ApplicationController
 
   end
 
+  def invite
+    @bandtogether = Bandtogether.find(params[:id])
+  end
 
 
   private
