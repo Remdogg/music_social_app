@@ -8,9 +8,7 @@ class Ability
         # if no user logged in, use a dummy user, see later
         user = User.new
       end
-      if user.has_role? :signed_in_user
-          can :read, :all
-      elsif user.has_role? :admin
+      if user.has_role? :admin
         can :manage, :all
 
       end

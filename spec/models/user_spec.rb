@@ -53,7 +53,17 @@ RSpec.describe User, type: :model do
     expect(user2.bandtogethers.map {|bandtogether| bandtogether.title}).to match ['twizzle', 'twizzle2']
 
     expect(Membership.where(user_id: "1").map {|membership| membership.bandtogether_id}).to match [bandtogether1.id, bandtogether2.id]
-
   end
 
+  it 'can have admin role abilities' do
+    user = User.new(first_name: 'Joe', last_name: 'Swift', email: 'joe@joe.com', password: 'password', password_confirmation: 'password')
+    user.add_role :admin
+    ability = Ability.new(user)
+    assert ability.can?(:manage, :all)
+  end
+  it 'cannot manage everything without being an admin' do
+    user = User.new(first_name: 'Joe', last_name: 'Swift', email: 'joe@joe.com', password: 'password', password_confirmation: 'password')
+    ability = Ability.new(user)
+    assert ability.cannot?(:manage, :all)
+  end
 end
