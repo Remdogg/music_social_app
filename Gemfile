@@ -49,7 +49,9 @@ gem 'paperclip'
 #google maps
 gem 'geocoder'
 gem 'gmaps4rails'
-
+# cancan rolify
+gem 'cancancan'
+gem 'rolify'
 
 
 group :development, :test do

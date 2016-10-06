@@ -1,5 +1,6 @@
 class ConcertsController < ApplicationController
-  before_action :set_concert, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_concert, only: [:show, :edit, :update, :destroy]
+  # load_and_authorize_resource
 
   # GET /concerts
   # GET /concerts.json
@@ -35,11 +36,16 @@ class ConcertsController < ApplicationController
 
   # GET /concerts/new
   def new
-    @concert = Concert.new
+    if current_user.has_role? :admin
+      @concert = Concert.new
+    end
   end
 
   # GET /concerts/1/edit
   def edit
+    if !current_user.has_role? :admin
+      redirect_to '/concerts'
+    end
   end
 
   # POST /concerts
@@ -61,13 +67,15 @@ class ConcertsController < ApplicationController
   # PATCH/PUT /concerts/1
   # PATCH/PUT /concerts/1.json
   def update
-    respond_to do |format|
-      if @concert.update(concert_params)
-        format.html { redirect_to @concert, notice: 'Concert was successfully updated.' }
-        format.json { render :show, status: :ok, location: @concert }
-      else
-        format.html { render :edit }
-        format.json { render json: @concert.errors, status: :unprocessable_entity }
+    if current_user.has_role? :admin
+      respond_to do |format|
+        if @concert.update(concert_params)
+          format.html { redirect_to @concert, notice: 'Concert was successfully updated.' }
+          format.json { render :show, status: :ok, location: @concert }
+        else
+          format.html { render :edit }
+          format.json { render json: @concert.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -75,10 +83,12 @@ class ConcertsController < ApplicationController
   # DELETE /concerts/1
   # DELETE /concerts/1.json
   def destroy
-    @concert.destroy
-    respond_to do |format|
-      format.html { redirect_to concerts_url, notice: 'Concert was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.has_role? :admin
+      @concert.destroy
+      respond_to do |format|
+        format.html { redirect_to concerts_url, notice: 'Concert was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
