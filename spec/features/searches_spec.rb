@@ -1,18 +1,28 @@
 require 'rails_helper'
+require 'support/features_support'
 
 RSpec.feature "Searches", type: :feature do
   context 'Search for specific concert' do
     Steps 'Type into search bar and click search button' do
+      Given 'I am signed in' do
+        sign_up('test@tesr.com', 'password', 'password', 'test', 'test')
+      end
+      Then 'I am given admin priv' do
+        user = User.last
+        user.add_role :admin
+        ability = Ability.new(user)
+      end
       Given 'I am on the concert page' do
-        visit '/'
+        visit '/concerts'
       end
       Then 'I can create a concert' do
         click_link 'New Concert'
         fill_in 'concert_title', with: 'T Swift - September 2016'
         fill_in 'concert_artist', with: 'Taylor Swift'
+        fill_in 'concert_address', with: '2 main st'
         fill_in 'concert_city', with: 'San Diego'
         fill_in 'concert_state', with: 'CA'
-        click_button 'Create Concert'
+        click_button 'Submit'
         expect(page).to have_content('T Swift - September 2016')
         expect(page).to have_content('Taylor Swift')
         expect(page).to have_content('San Diego')
@@ -24,7 +34,7 @@ RSpec.feature "Searches", type: :feature do
       And 'I can search for concerts' do
         fill_in 'search', with: 'Taylor'
         click_button 'Search'
-        expect(page).to have_content('Taylor Swift')
+        expect(page).to have_content('Swift')
         fill_in 'search', with: 'charles'
         click_button 'Search'
         expect(page).to have_no_content('charles')

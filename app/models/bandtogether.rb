@@ -1,4 +1,7 @@
 class Bandtogether < ActiveRecord::Base
+
+  resourcify
+
   belongs_to :concert
   belongs_to :organizer, :class_name => 'User'
   has_many :members, through: :memberships, source: :user

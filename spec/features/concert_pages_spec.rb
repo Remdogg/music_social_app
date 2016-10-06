@@ -36,16 +36,22 @@ RSpec.feature "ConcertPages", type: :feature do
         fill_in 'user_email', with: 'taylor@email.com'
         fill_in 'user_password', with: 'test123'
         click_button 'Log in'
-
+        expect(page).to have_content('Taylor')
+      end
+      Then 'I am assigned admin priv' do
+        user = User.last
+        user.add_role :admin
+        ability = Ability.new(user)
       end
         Then 'I can create a concert' do
           visit '/concerts'
           click_link 'New Concert'
           fill_in 'concert_title', with: 'T Swift - September 2016'
           fill_in 'concert_artist', with: 'Taylor Swift'
+          fill_in 'concert_address', with: '1 main street'
           fill_in 'concert_city', with: 'San Diego'
           fill_in 'concert_state', with: 'CA'
-          click_button 'Create Concert'
+          click_button 'Submit'
           expect(page).to have_content('T Swift - September 2016')
           expect(page).to have_content('Taylor Swift')
           expect(page).to have_content('San Diego')
