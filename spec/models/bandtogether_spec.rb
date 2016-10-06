@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/features_support'
 
 RSpec.describe Bandtogether, type: :model do
   it "is a thing" do
@@ -28,7 +29,8 @@ RSpec.describe Bandtogether, type: :model do
 
   it 'can belong to one organizer' do
     user = User.new(first_name: 'Taylor', last_name: 'Swift', email: 'joe@joe.com', password: 'password', password_confirmation: 'password')
-    bandtogether1 = Bandtogether.new(title: 'twizzle', start_time: '8pm', end_time: '8:01pm', description: 'carpool from one block to the other', concert: Concert.new())
+    concert = Concert.new(artist: 'test', title: 'test', address: 'test', city: 'test', state: 'test')
+    bandtogether1 = Bandtogether.new(title: 'twizzle', start_time: '8pm', end_time: '8:01pm', description: 'carpool from one block to the other', concert: concert)
 
     user.id = 1
     user.save
@@ -51,7 +53,9 @@ RSpec.describe Bandtogether, type: :model do
     user2.id = 2
     user2.save
 
-    bandtogether1 = Bandtogether.new(title: 'twizzle', start_time: '8pm', end_time: '8:01pm', description: 'carpool from one block to the other', concert: Concert.new())
+    concert = Concert.new(artist: 'test', title: 'test', address: 'test', city: 'test', state: 'test')
+
+    bandtogether1 = Bandtogether.new(title: 'twizzle', start_time: '8pm', end_time: '8:01pm', description: 'carpool from one block to the other', concert: concert)
 
     bandtogether1.id = 3
     bandtogether1.save

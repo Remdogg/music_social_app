@@ -38,6 +38,8 @@ class ConcertsController < ApplicationController
   def new
     if current_user.has_role? :admin
       @concert = Concert.new
+    else
+      redirect_to '/concerts'
     end
   end
 

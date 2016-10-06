@@ -42,8 +42,9 @@ RSpec.describe User, type: :model do
 
   it 'can be a member of many bandtogethers' do
     user = User.new(first_name: 'Taylor', last_name: 'Swift', email: 'joe@joe.com', password: 'password', password_confirmation: 'password')
-    bandtogether1 = Bandtogether.new(title: 'twizzle', start_time: '8pm', end_time: '8:01pm', description: 'carpool from one block to the other', concert: Concert.new())
-    bandtogether2 = Bandtogether.new(title: 'twizzle2', start_time: '8pm', end_time: '8:01pm', description: 'carpool from one block to the other', concert: Concert.new())
+    concert = Concert.new(artist: 'test', title: 'test', address: 'test', city: 'test', state: 'test')
+    bandtogether1 = Bandtogether.new(title: 'twizzle', start_time: '8pm', end_time: '8:01pm', description: 'carpool from one block to the other', concert: concert)
+    bandtogether2 = Bandtogether.new(title: 'twizzle2', start_time: '8pm', end_time: '8:01pm', description: 'carpool from one block to the other', concert: concert)
 
     user2 = User.new(first_name: 'Joe', last_name: 'Swift', email: 'joe@joe.com', password: 'password', password_confirmation: 'password')
     user2.id = 1
