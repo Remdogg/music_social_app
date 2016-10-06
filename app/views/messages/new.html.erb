@@ -3,7 +3,14 @@
 
 
 
-<div class="form-group">
+<h2>To:
+  <% if !@chosen_recipient.avatar_file_name.nil?%>
+    <%=image_tag(@chosen_recipient.avatar.url(:thumb))%>
+  <%end%>
+  <%=@chosen_recipient.first_name%> <%=@chosen_recipient.last_name%></h2>
+<br>
+
+<div class="form-group hidden">
   <%= label_tag 'recipients', 'Choose recipients' %>
   <%= select_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
 </div>

@@ -21,7 +21,7 @@
       <%= link_to 'Mark as unread', mark_as_unread_conversation_path(conversation),
                 class: 'btn btn-xs btn-info', method: :post %>
       <% end %>
-      <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete,
+      <%= link_to '<i class="fa fa-trash-o" aria-hidden="true"></i>'.html_safe, conversation_path(conversation), class: 'btn btn-xs btn-danger', id:"put_in_trash", method: :delete,
                   data: {confirm: 'Are you sure?'} %>
     <% end %>
     <% end %>
