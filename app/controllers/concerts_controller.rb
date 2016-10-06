@@ -1,6 +1,9 @@
 class ConcertsController < ApplicationController
+  # to include get_unread_count
+  include ApplicationHelper
   before_action :set_concert, only: [:show, :edit, :update, :destroy]
-
+  #counts unread emails in current user inbox
+  before_action :get_unread_count
   # GET /concerts
   # GET /concerts.json
 

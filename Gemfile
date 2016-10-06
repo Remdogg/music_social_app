@@ -46,6 +46,14 @@ gem 'omniauth-facebook'
 gem 'textacular', '~> 3.0'
 # gem for paperclip
 gem 'paperclip'
+
+#gems for mailboxer
+gem 'mailboxer'
+gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
+gem 'chosen-rails'
+
 #google maps
 gem 'geocoder'
 gem 'gmaps4rails'

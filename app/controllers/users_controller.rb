@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
+  # to include get_unread_count
+  include ApplicationHelper
   before_action :current_user, only: [:index, :edit, :update, :destroy, :following, :followers]
+  #counts unread emails in current user inbox
+  before_action :get_unread_count
 
   def index
     if user_signed_in?
        if params[:search].nil? || params[:search].empty?
-         @users = User.all
+          @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)
        else
-         @users = User.search(params[:search])
+         @users = User.search(params[:search]).order('created_at DESC').paginate(page: params[:page], per_page: 30)
        end
     else
       redirect_to '/'
