@@ -8,3 +8,10 @@ def sign_up(email, password, first_name, last_name)
   fill_in 'user[last_name]', with: last_name
   click_button 'Sign up'
 end
+
+def sign_in(email, password)
+  visit '/users/sign_in'
+  fill_in 'user[email]', with: email
+  fill_in 'user[password]', with: password
+  click_button 'Log in'
+end
