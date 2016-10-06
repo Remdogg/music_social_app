@@ -31,7 +31,7 @@
         <!-- Adding one to the membership count to include organizer -->
         <td><%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %>
         <% if user_signed_in? %>
-          <% if bandtogether.organizer_id == current_user.id%>
+          <% if bandtogether.organizer_id == current_user.id || (current_user.has_role? :admin) %>
             <td><%= link_to 'Edit', edit_bandtogether_path(bandtogether) %></td>
             <td><%= link_to 'Destroy', bandtogether, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>

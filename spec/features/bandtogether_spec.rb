@@ -67,9 +67,6 @@ RSpec.feature "BandtogetherPages", type: :feature do
         expect(page).to have_content('10pm')
         expect(page).to have_content('let loose')
       end
-      Then 'I can add a comment' do
-        pending
-      end
     end
   end
 end
