@@ -13,6 +13,12 @@ class ConcertsController < ApplicationController
      else
        @concerts = Concert.fuzzy_search(params[:search])
      end
+     #google maps
+     @pindrop = Gmaps4rails.build_markers(@concerts) do |concert, marker|
+       marker.lat concert.latitude
+       marker.lng concert.longitude
+       marker.infowindow concert.address
+     end
    end
 
   # GET /concerts/1
@@ -22,8 +28,12 @@ class ConcertsController < ApplicationController
     @bandtogether = Bandtogether.new
 
     @bandtogether.concert = Concert.find(params[:id])
-
-
+    @concerts = Concert.find(params[:id]) #@concerts may also be found using the set_concert method provided by scaffolding
+    @pindrop = Gmaps4rails.build_markers(@concerts) do |concert, marker|
+      marker.lat concert.latitude
+      marker.lng concert.longitude
+      marker.infowindow concert.address
+    end
   end
 
   # GET /concerts/new
@@ -75,6 +85,16 @@ class ConcertsController < ApplicationController
     end
   end
 
+  def map_location
+     @concert = concert.find(params[:concert_id])
+     @hash = Gmaps4rails.build_markers(@concert) do |concert, marker|
+       marker.lat concert.latitude
+       marker.lng concert.longitude
+       marker.infowindow concert.address
+     end
+     render json: @hash.to_json
+   end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_concert
@@ -83,6 +103,6 @@ class ConcertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def concert_params
-      params.require(:concert).permit(:title, :start, :end, :artist, :city, :state)
+      params.require(:concert).permit(:title, :start, :end, :artist, :city, :state, :address, :latitude, :longitude)
     end
 end

@@ -37,7 +37,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # gem for bootstrap
 gem 'bootstrap-generators'
-
+# gem for commontator
+gem 'commontator'
 
 #facebook validation
 gem 'omniauth-facebook'
@@ -45,12 +46,19 @@ gem 'omniauth-facebook'
 gem 'textacular', '~> 3.0'
 # gem for paperclip
 gem 'paperclip'
+
 #gems for mailboxer
 gem 'mailboxer'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate'
 gem 'chosen-rails'
+
+#google maps
+gem 'geocoder'
+gem 'gmaps4rails'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

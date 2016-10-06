@@ -4,94 +4,99 @@
   <%= devise_error_messages! %>
 
   <p id="notice"><%= notice %></p>
+  <div class = "row">
+    <div class = "col-sm-8">
 
-  <div class="form-group">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-  </div>
+      <div class="form-group">
+        <%= f.label :avatar, class: "col-sm-2 control-label" %>
+        <%= f.file_field :avatar, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
+      <div class="form-group">
+        <%= f.label :first_name, class: "col-sm-2 control-label" %><br/>
+        <%= f.text_field :first_name, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
+      <div class="form-group">
+        <%= f.label :last_name, class: "col-sm-2 control-label" %><br/>
+        <%= f.text_field :last_name, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :age %><br />
-    <%= f.number_field :age %>
-  </div>
+      <div class="form-group">
+        <%= f.label :age, class: "col-sm-2 control-label" %><br/>
+        <%= f.number_field :age, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
-  </div>
+      <div class="form-group">
+        <%= f.label :gender, class: "col-sm-2 control-label" %><br/>
+        <%= f.text_field :gender, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
+      <div class="form-group">
+        <%= f.label :city, class: "col-sm-2 control-label" %><br/>
+        <%= f.text_field :city, class: "form-control", placeholder: "Required" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
+      <div class="form-group">
+        <%= f.label :state, class: "col-sm-2 control-label" %><br/>
+        <%= f.text_field :state, class: "form-control", placeholder: "Required" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.number_field :postal_code %>
-  </div>
+      <div class="form-group">
+        <%= f.label :postal_code, class: "col-sm-2 control-label" %><br/>
+        <%= f.number_field :postal_code, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :about %><br />
-    <%= f.text_field :about %>
-  </div>
+      <div class="form-group">
+        <%= f.label :about, class: "col-sm-2 control-label" %><br/>
+        <%= f.text_area :about, class: "form-control", placeholder: "Tell other users a little about yourself"%>
+      </div>
 
-  <div class="field">
-    <%= f.label :artists %><br />
-    <%= f.text_field :artists %>
-  </div>
+      <div class="form-group">
+        <%= f.label :artists, class: "col-sm-2 control-label" %><br/>
+        <%= f.text_area :artists, class: "form-control", placeholder: "Add a few bands and artists you enjoy" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <div class="form-group">
+        <%= f.label :email, class: "col-sm-2 control-label" %><br/>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-  <% if current_user.provider != "facebook" %>
-    <div class="field">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-      <% if @minimum_password_length %>
+      <% if current_user.provider != "facebook" %>
+      <div class="form-group">
+        <%= f.label :password, class: "col-sm-2 control-label" %> <i>(leave blank if you don't want to change it)</i><br/>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        <% if @minimum_password_length %>
         <br />
         <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, class: "col-sm-2 control-label" %><br/>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password, class: "col-sm-2 control-label" %> <i>(we need your current password to confirm your changes)</i><br/>
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+      </div>
+      <%end%>
+
+      <div class="actions">
+        <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
+      </div>
       <% end %>
     </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
-  <%end%>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
+    <div class = "col-sm-4"></div>
   </div>
-<% end %>
+<br>
+<%= link_to "Back", :back  %>
+<hr>
+<p>Want to leave Bandtogether?</p>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<p><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
