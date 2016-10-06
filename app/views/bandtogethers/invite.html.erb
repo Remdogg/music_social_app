@@ -1,0 +1,22 @@
+
+<%= form_tag messages_path, method: :post do %>
+
+
+
+<div class="form-group">
+  <%= label_tag 'recipients', 'Choose recipients' %>
+  <%= select_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
+</div>
+
+  <div class="form-group">
+    <%= label_tag 'message[subject]', 'Subject' %>
+    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true, value: current_user.first_name + ' invites you to a Bandtogether!' %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'message[body]', 'Message' %>
+    <%= text_area_tag 'message[body]', 'Go to this website to view this awesome event! http://localhost:3000/bandtogethers/' + @bandtogether.id.to_s , cols: 3, class: 'form-control', required: true %>
+  </div>
+
+  <%= submit_tag 'Send', class: 'btn btn-primary' %>
+<% end %>
