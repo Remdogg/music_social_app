@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :photos
 #mailboxer
   resources :conversations, only: [:index, :show, :destroy] do
     collection do

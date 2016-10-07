@@ -28,6 +28,11 @@ has_many :bandtogethers, through: :memberships
 has_many :memberships
 
 #paperclip
+has_many :photos
+
+has_attached_file :photo, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/missing.png"
+
+
 has_attached_file :avatar, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/missing.png"
 validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
