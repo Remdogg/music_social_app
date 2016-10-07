@@ -8,57 +8,57 @@
     <div class = "col-sm-8">
 
       <div class="form-group">
-        <%= f.label :avatar, class: "col-sm-2 control-label" %>
+        <%= f.label :avatar, class: "control-label" %>
         <%= f.file_field :avatar, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :first_name, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :first_name, class: "control-label" %><br/>
         <%= f.text_field :first_name, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :last_name, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :last_name, class: "control-label" %><br/>
         <%= f.text_field :last_name, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :age, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :age, class: "control-label" %><br/>
         <%= f.number_field :age, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :gender, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :gender, class: "control-label" %><br/>
         <%= f.text_field :gender, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :city, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :city, class: "control-label" %><br/>
         <%= f.text_field :city, class: "form-control", placeholder: "Required" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :state, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :state, class: "control-label" %><br/>
         <%= f.text_field :state, class: "form-control", placeholder: "Required" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :postal_code, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :postal_code, class: "control-label" %><br/>
         <%= f.number_field :postal_code, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :about, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :about, class: "control-label" %><br/>
         <%= f.text_area :about, class: "form-control", placeholder: "Tell other users a little about yourself"%>
       </div>
 
       <div class="form-group">
-        <%= f.label :artists, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :artists, class: "control-label" %><br/>
         <%= f.text_area :artists, class: "form-control", placeholder: "Add a few bands and artists you enjoy" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :email, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :email, class: "control-label" %><br/>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
 
@@ -68,7 +68,7 @@
 
       <% if current_user.provider != "facebook" %>
       <div class="form-group">
-        <%= f.label :password, class: "col-sm-2 control-label" %> <i>(leave blank if you don't want to change it)</i><br/>
+        <%= f.label :password, class: "control-label" %> <i>(leave blank if you don't want to change it)</i><br/>
         <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
         <% if @minimum_password_length %>
         <br />
@@ -77,12 +77,12 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation, class: "col-sm-2 control-label" %><br/>
+        <%= f.label :password_confirmation, class: "control-label" %><br/>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :current_password, class: "col-sm-2 control-label" %> <i>(we need your current password to confirm your changes)</i><br/>
+        <%= f.label :current_password, class: "control-label" %> <i>(we need your current password to confirm your changes)</i><br/>
         <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
       </div>
       <%end%>
