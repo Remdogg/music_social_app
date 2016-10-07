@@ -35,6 +35,11 @@
 <br>
 <br>
 
+<% @pictures.each do |picture|%>
+  <li>
+    <%=link_to image_tag picture.picture.url(:thumb)%>
+  </li>
+  <% end %>
 
 <h4>Email</h4>
 <h5><%=@user.email%></h5>
