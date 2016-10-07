@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-
+<div class="row">
   <div class="col-md-6">
+    <div class="panel panel-default">
     <p>
       <strong>Title:</strong>
       <%= @bandtogether.title %>
@@ -22,7 +23,7 @@
       <strong>Concert:</strong>
       <%= @bandtogether.concert.title %>
     </p>
-
+  </div>
 
   <a class="btn btn-default btn-sm" href="/bandtogethers/<%=@bandtogether.id%>/invite">Invite</a>
 
@@ -61,16 +62,15 @@
 <br>
 
 <% if @bandtogether.organizer == current_user %>
-<%= link_to 'Edit', edit_bandtogether_path(@bandtogether) %> |
+<%= link_to 'Edit Bandtogether', edit_bandtogether_path(@bandtogether) %> |
 <% end %>
-
-<br>
 
 <%= link_to 'Back', bandtogethers_path %>
 
 </div>
 
 
-<div class="col-md-6">
+<div class="col-md-6 avatar-center">
   <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium)) %>
+</div>
 </div>
