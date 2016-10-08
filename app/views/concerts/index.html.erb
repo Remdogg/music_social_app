@@ -1,10 +1,7 @@
-</div> <!--this closes the container div from layout-->
+
 <div class="jumbotron">
-  <div class="container">
     <h1>Bandtogether</h1>
-  </div>
 </div>
-<div><!--reopens container div from layout-->
 
 <p id="notice"><%= notice %></p>
 
@@ -23,20 +20,23 @@
       <th>Artist</th>
       <th>City</th>
       <th>State</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @concerts.each do |concert| %>
       <tr>
-        <td><%= concert.title %></td>
+        <td><a href = 'concerts/<%=concert.id %>'><%= concert.title %></a></td>
         <td><%= concert.start %></td>
         <td><%= concert.end %></td>
         <td><%= concert.artist %></td>
         <td><%= concert.city %></td>
         <td><%= concert.state %></td>
+<<<<<<< HEAD
         <td><%= link_to 'Show', concert %></td>
+=======
+>>>>>>> 8da1da95ab4edef4a5cb2282fc2674fe0f82e1fb
         <% if !current_user.nil? %>
         <% if current_user.has_role? :admin %>
         <td><%= link_to 'Edit', edit_concert_path(concert) %></td>

@@ -23,7 +23,7 @@ acts_as_commontable
 acts_as_messageable
 
 # membership/organizer relationship
-has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id'
+has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id', dependent: :destroy
 has_many :bandtogethers, through: :memberships
 has_many :memberships
 

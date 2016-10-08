@@ -1,0 +1,11 @@
+.avatar-center {
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  
+}
+
+.panel-default{
+  padding: 10px 10px 10px 10px;
+  margin: 20px 20px 20px 20px;
+}
