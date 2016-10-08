@@ -1,5 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
-
+  # to include get_unread_count
+  include ApplicationHelper
+  #counts unread emails in current user inbox
+  before_action :get_unread_count
 
 def after_sign_up_path_for(resource)
     '/users/edit' # Or :prefix_to_your_route

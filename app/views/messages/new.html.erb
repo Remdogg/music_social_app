@@ -1,0 +1,29 @@
+
+<%= form_tag messages_path, method: :post do %>
+
+
+
+<h2>To:
+  <% if !@chosen_recipient.avatar_file_name.nil?%>
+    <%=image_tag(@chosen_recipient.avatar.url(:thumb))%>
+  <%end%>
+  <%=@chosen_recipient.first_name%> <%=@chosen_recipient.last_name%></h2>
+<br>
+
+<div class="form-group hidden">
+  <%= label_tag 'recipients', 'Choose recipients' %>
+  <%= select_tag 'recipients', recipients_options(@chosen_recipient), multiple: true, class: 'form-control chosen-it' %>
+</div>
+
+  <div class="form-group">
+    <%= label_tag 'message[subject]', 'Subject' %>
+    <%= text_field_tag 'message[subject]', nil, class: 'form-control', required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag 'message[body]', 'Message' %>
+    <%= text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true %>
+  </div>
+
+  <%= submit_tag 'Send', class: 'btn btn-primary' %>
+<% end %>

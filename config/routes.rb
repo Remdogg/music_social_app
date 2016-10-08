@@ -1,6 +1,25 @@
 Rails.application.routes.draw do
 
 
+
+
+#mailboxer
+  resources :conversations, only: [:index, :show, :destroy] do
+    collection do
+      delete :empty_trash
+    end
+    member do
+      post :reply
+      post :restore
+      post :mark_as_read
+      post :mark_as_unread
+    end
+  end
+
+
+
+  resources :messages, only: [:new, :create]
+
   resources :bandtogethers
   devise_for :users, controllers: {registrations: "registrations", omniauth_callbacks: "omniauth_callbacks"}
 
@@ -25,7 +44,7 @@ Rails.application.routes.draw do
 
   get '/bandtogethers/:id/join(.:format)' => 'users#join'
   get '/bandtogethers/:id/leave(.:format)' => 'users#leave'
-
+  get '/bandtogethers/:id/invite' => 'bandtogethers#invite'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

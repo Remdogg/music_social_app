@@ -1,5 +1,9 @@
 class BandtogethersController < ApplicationController
+  # to include get_unread_count
+  include ApplicationHelper
   before_action :set_bandtogether, only: [:show, :edit, :update, :destroy]
+  #counts unread emails in current user inbox
+  before_action :get_unread_count
 
   # GET /bandtogethers
   # GET /bandtogethers.json
@@ -96,6 +100,9 @@ class BandtogethersController < ApplicationController
 
   end
 
+  def invite
+    @bandtogether = Bandtogether.find(params[:id])
+  end
 
 
   private

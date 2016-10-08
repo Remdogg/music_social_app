@@ -9,7 +9,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Upcoming Concerts</h1>
-<form action="/" method="get">
+<form action="/concerts" method="get">
  <input type="text" name="search">
  <input type="submit" value="Search" >
 </form>
@@ -37,10 +37,11 @@
         <td><%= concert.city %></td>
         <td><%= concert.state %></td>
         <td><%= link_to 'Show', concert %></td>
-        <% if user_signed_in? %>
-        <!-- TODO add admin ability to create/edit/destroy concerts -->
+        <% if !current_user.nil? %>
+        <% if current_user.has_role? :admin %>
         <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
         <td><%= link_to 'Destroy', concert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         <% end %>
       </tr>
     <% end %>
@@ -50,8 +51,11 @@
 
 <br>
 
+<% if !current_user.nil? %>
+<% if current_user.has_role? :admin %>
 <%= link_to 'New Concert', new_concert_path %>
-
+<% end %>
+<% end %>
 
 <div id="map">Google map will appear here...</div>
          <script type="text/javascript">

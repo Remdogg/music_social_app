@@ -15,4 +15,6 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap
+//= require chosen-jquery
+//= require messages
 //= require_tree .
