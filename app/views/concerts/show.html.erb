@@ -1,45 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<<<<<<< HEAD
-<p>
-  <strong>Title:</strong>
-  <%= @concert.title %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= @concert.start %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @concert.end %>
-</p>
-
-<p>
-  <strong>Artist:</strong>
-  <%= @concert.artist %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @concert.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @concert.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @concert.state %>
-</p>
-<% if current_user.has_role? :admin %>
-<%= link_to 'Edit', edit_concert_path(@concert) %> |
-<% end %>
-<%= link_to 'Back', concerts_path %>
-=======
 <div class="header">
   <h1><%= @concert.title %></h1>
 </div>
@@ -66,7 +26,6 @@
         <% end %></p>
       </div>
 
->>>>>>> 8da1da95ab4edef4a5cb2282fc2674fe0f82e1fb
 
 
       <div class="panel panel-default center">
@@ -74,7 +33,7 @@
           <% @concert.bandtogethers.each do |bandtogether| %>
           <div class="bandtogether">
               <h4><%= link_to bandtogether.title, bandtogether %></h4>
-              <p><%= bandtogether.start_time%> | 
+              <p><%= bandtogether.start_time%> |
               Attending:
                 <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %></p>
                 <br>

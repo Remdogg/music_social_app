@@ -33,10 +33,6 @@
         <td><%= concert.artist %></td>
         <td><%= concert.city %></td>
         <td><%= concert.state %></td>
-<<<<<<< HEAD
-        <td><%= link_to 'Show', concert %></td>
-=======
->>>>>>> 8da1da95ab4edef4a5cb2282fc2674fe0f82e1fb
         <% if !current_user.nil? %>
         <% if current_user.has_role? :admin %>
         <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
