@@ -6,3 +6,22 @@
   color: white;
   text-align: left;
 }
+
+.dash-name > h2 {
+  font-family: Megrim, cursive;
+  color: #00ffff;
+  text-shadow: 1px 1px black;
+  font-size: 60px;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.dash-name > h3 {
+  font-family: Megrim, cursive;
+  color: #00ffff;
+  text-shadow: 1px 1px black;
+  text-align: center;
+  padding-bottom: 10px;
+}
