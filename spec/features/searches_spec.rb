@@ -5,7 +5,7 @@ RSpec.feature "Searches", type: :feature do
   context 'Search for specific concert' do
     Steps 'Type into search bar and click search button' do
       Given 'I am signed in' do
-        sign_up('test@tesr.com', 'password', 'password', 'test', 'test')
+        sign_up('test', 'test','test@tesr.com', 'password', 'password')
       end
       Then 'I am given admin priv' do
         user = User.last
