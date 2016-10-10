@@ -35,15 +35,8 @@
 <br>
 <br>
 
-<% @pictures.each do |picture|%>
-  <li>
-    <%=link_to image_tag picture.picture.url(:thumb)%>
-  </li>
-  <% end %>
 
 
-<% 1/0 %>
-    <%=render_gallery_for @pictures%>
 
 
 <h4>Email</h4>
@@ -85,10 +78,13 @@
 <br>
 <br>
 
+  <%=render_gallery_for @pictures%>
+
+<div class="clearfix">
 
 
 <h3> <%=@user.first_name%>'s Bandtogethers</h3>
-
+</div>
 <table class="table">
   <thead>
     <tr>
