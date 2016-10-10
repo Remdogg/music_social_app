@@ -16,6 +16,22 @@
 }
 
 
+.thumbnails {
+  text-decoration: none;
+  list-style: none;
+  border-style: none;
+}
+
+
+.thumbnail {
+  border-style: none;
+  float: left;
+}
+
+.clearfix {
+  clear: both;
+}
+
 
 body {
   background-color: #f7f7f7;
@@ -40,13 +56,6 @@ pre {
 
 a {
   color: #000;
-
-
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
 }
 
 div {
