@@ -63,6 +63,7 @@ class ConcertsController < ApplicationController
 
     respond_to do |format|
       if @concert.save
+        @concert.create_activity :create, owner: current_user
         format.html { redirect_to @concert, notice: 'Concert was successfully created.' }
         format.json { render :show, status: :created, location: @concert }
       else
@@ -78,6 +79,7 @@ class ConcertsController < ApplicationController
     if current_user.has_role? :admin
       respond_to do |format|
         if @concert.update(concert_params)
+          @concert.create_activity :update, owner: current_user
           format.html { redirect_to @concert, notice: 'Concert was successfully updated.' }
           format.json { render :show, status: :ok, location: @concert }
         else

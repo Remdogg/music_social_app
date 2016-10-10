@@ -30,7 +30,7 @@
 
       <div class="panel panel-default center">
       <h3>Bandtogethers for <%=@concert.title%></h3>
-          <% @concert.bandtogethers.each do |bandtogether| %>
+          <% @concert.bandtogethers.order("created_at desc").each do |bandtogether| %>
           <div class="bandtogether">
               <h4><%= link_to bandtogether.title, bandtogether %></h4>
               <p><%= bandtogether.start_time%> |

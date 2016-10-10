@@ -1,14 +1,37 @@
+
 <p id="notice"><%= notice %></p>
+
 <div class="dash-name">
   <h2>Welcome, <%=current_user.first_name%>! </h2>
-  <h3><%=current_user.city%>, <%=current_user.state%></h3>
+
+  <% if current_user.city.present? && current_user.state.present? %>
+    <% if !current_user.city.nil? || !current_user.state.nil? %>
+      <h3> <%= [current_user.city, current_user.state].join(', ')%></h3>
+    <% end %>
+  <% end %>
+
 
 </div>
 
 <div class="row">
   <div class="col-sm-6">
     <div class="well textcenter">
-        <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
+      <h3 class="dashheader"> Activity Feed </h3>
+      <% @activities.each do |activity| %>
+      <div class="activity">
+        <%= link_to activity.owner.first_name, activity.owner if activity.owner%>
+        <%= render_activity activity %>
+      </div>
+      <% end %>
+      </div>
+    </div>
+
+    <section class="stats">
+       <%= render 'shared/stats' %>
+     </section>
+
+    <div class="col-sm-3 panel panel-default textcenter scroll">
+      <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
       <br>
       <% @bandtogethers.each do |bandtogether| %>
       <h4><%= link_to bandtogether.title, bandtogether %></h4>
@@ -18,33 +41,26 @@
         Attending:
         <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %></p>
         <% end %>
-      </div>
     </div>
 
-    <div class="col-sm-1"></div>
-
-    <div class="col-sm-4 panel panel-default textcenter">
-      <h3 class="dashheader">People You're Following</h3>
-      <% if @users.any? %>
-      <% @user.following.ids.each do |id| %>
-      <% @name = User.find(id) %>
-      <div class="listing">
-        <li> <%= image_tag(@name.avatar.url(:thumb)) %>
-          <a href="/users/<%=@name.id%>"><%= @name.first_name %> <%= @name.last_name %></a> </li>
+      <div class="col-sm-2 panel panel-default">
+        <h3 class="dashheader">
+          People You're Following</h3>
+          <% if @users.any? %>
+          <% @user.following.ids.each do |id| %>
+          <% @name = User.find(id) %>
+          <div class="listing">
+            <li> <%= image_tag(@name.avatar.url(:thumb)) %>
+              <a href="/users/<%=@name.id%>"><%= @name.first_name %> <%= @name.last_name %></a> </li>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
         </div>
-        <% end %>
-        <% end %>
-      </div>
-      <div class="col-sm-1"></div>
-    </div>
 
     <div class="row">
-      <div class="col-sm-6 panel panel-default">
+      <div class="well textcenter">
         <h3 class="dashheader">Create a New Bandtogether</h3>
         <%= render '/bandtogethers/form' %>
+          </div>
       </div>
-
-      <div class="col-sm-1"></div>
-      <div class="col-sm-4 well"><br><br><br></div>
-      <div class="col-sm-1"></div>
-    </div>
