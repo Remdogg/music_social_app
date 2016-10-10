@@ -1,3 +1,6 @@
+
+<p id="notice"><%= notice %></p>
+
 <div class="dash-name">
   <h2>Welcome, <%=current_user.first_name%>! </h2>
 
@@ -6,6 +9,7 @@
       <h3> <%= [current_user.city, current_user.state].join(', ')%></h3>
     <% end %>
   <% end %>
+
 
 </div>
 

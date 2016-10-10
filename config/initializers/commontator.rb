@@ -64,7 +64,9 @@ Commontator.configure do |config|
   #            view.commontator_gravatar_image_tag(
   #              user, 1, :s => 60, :d => 'mm') }
   config.user_avatar_proc = lambda { |user, view|
-                                    view.tag(:img, {src: "#{user.avatar.url(:thumb)}"})
+                                    if !user.avatar_file_name.nil?
+                                      view.tag(:img, {src: "#{user.avatar.url(:thumb)}"})
+                                    end
                                     #  view.commontator_gravatar_image_tag(
                                     #    user, 1, :s => 60, :d => 'mm')
                                   }

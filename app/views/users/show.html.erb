@@ -81,37 +81,40 @@
 
   <%=render_gallery_for @pictures%>
 
-<div class="clearfix">
 
+<% if !@bandtogethers.empty? %>
 
-<h3> <%=@user.first_name%>'s Bandtogethers</h3>
-</div>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Description</th>
-      <th>Concert</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bandtogethers.each do |bandtogether| %>
+  <div class="clearfix">
+  <h3> <%=@user.first_name%>'s Bandtogethers</h3>
+  </div>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%=link_to bandtogether.title, bandtogether %></td>
-        <td><%= bandtogether.start_time %></td>
-        <td><%= bandtogether.end_time %></td>
-        <td><%= bandtogether.description %></td>
-        <td><%= bandtogether.concert.title %></td>
-        <% if @user == current_user %>
-          <td><%= link_to 'Edit', edit_bandtogether_path(bandtogether) %></td>
-          <td><%= link_to 'Destroy', bandtogether, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <th>Title</th>
+        <th>Start time</th>
+        <th>End time</th>
+        <th>Description</th>
+        <th>Concert</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @bandtogethers.each do |bandtogether| %>
+        <tr>
+          <td><%=link_to bandtogether.title, bandtogether %></td>
+          <td><%= bandtogether.start_time %></td>
+          <td><%= bandtogether.end_time %></td>
+          <td><%= bandtogether.description %></td>
+          <td><%= bandtogether.concert.title %></td>
+          <% if @user == current_user %>
+            <td><%= link_to 'Edit', edit_bandtogether_path(bandtogether) %></td>
+            <td><%= link_to 'Destroy', bandtogether, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end%>
 </div>
