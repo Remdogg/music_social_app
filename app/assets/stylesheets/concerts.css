@@ -19,6 +19,11 @@
   font-family: 'Megrim', cursive;
   font-weight: 900;
   text-shadow: 2px 2px black;
+  margin-left: 20px;
+}
+
+.align-right {
+  text-align: right;
 }
 
 .box {
@@ -26,6 +31,9 @@
   text-align: center;
   color: #00ffff;
   padding: 10px 10px 10px 10px;
+  font-family: 'Megrim', cursive;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
 .header {
@@ -44,7 +52,7 @@
   text-shadow: 2px 2px white;
 }
 
-.center{
+.center {
   text-align: center;
   padding: 10px 10px 10px 10px;
   margin: 20px 20px 20px 20px;
@@ -58,6 +66,7 @@
   width: 175px;
   background-color: #373854;
   border-color: white;
+  margin-left: 25px;
 
 }
 
@@ -72,18 +81,19 @@
 }
 
 
+.sidebar {
+    text-align: center;
 
-/*
-.sidebar h2 {
-  position: relative;
-  text-align: center;
 }
 
+
 .sidebar h2 span {
-  background: #fff;
+  background: #f7f7f7;
   padding: 0 15px;
   position: relative;
   z-index: 1;
+
+
 }
 
 .sidebar h2:before {
@@ -92,10 +102,7 @@
   display: block;
   height: 1px;
   position: absolute;
-    top: 50%;
-  width: 100%;
-}
+  width: 96%;
+  top: 78%;
 
-.sidebar h2:before {
-  left: 0;
-}*/
+}

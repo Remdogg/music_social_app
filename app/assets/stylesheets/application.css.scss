@@ -16,8 +16,22 @@
   *= require_tree .
  */
 
+.navbar-margin {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 @import "chosen";
+
+.white a {
+  color: white;
+}
+
+.white a:hover, .white a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
 
 .listing > li {
   list-style: none;

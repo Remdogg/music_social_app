@@ -1,11 +1,25 @@
+</div>
+
+<div class="row">
+
 
 <div class="jumbotron">
-  <div class="row">
-    <div class="jumbo col-sm-7">
+    <div class="jumbo col-sm-5">
       <h1>Bandtogether</h1>
+      <div class="btn btn-primary">
+        <%= link_to '<i class="fa fa-facebook" aria-hidden="true"></i> Join with Facebook'.html_safe, user_facebook_omniauth_authorize_path %>
+      </div>
+      <div class="btn btn-primary">
+        <%= link_to '<i class="fa fa-envelope" aria-hidden="true"></i> Join with Email'.html_safe, new_user_registration_path  %>
+      </div>
     </div>
 
-    <div class="box col-sm-5">
+    <div class="col-sm-3">
+
+    </div>
+
+    <div class="align-right">
+    <div class="box col-sm-3">
       <h2> How It Works </h2>
       <h3> <i class="fa fa-headphones" aria-hidden="true"></i>
         Find Concerts You're Attending
@@ -15,17 +29,14 @@
         <br>
         <i class="fa fa-users" aria-hidden="true"></i>
         Make New Friends </h3>
-
-  <div class="container">
-    <h1>Bandtogether</h1>
-    <div class="btn btn-primary">
-      <%= link_to '<i class="fa fa-facebook" aria-hidden="true"></i> Join with Facebook'.html_safe, user_facebook_omniauth_authorize_path %>
-    </div>
-    <div class="btn btn-primary">
-      <%= link_to '<i class="fa fa-envelope" aria-hidden="true"></i> Join with Email'.html_safe, new_user_registration_path  %>
     </div>
   </div>
 </div>
+</div>
+
+<div class="container">
+
+
 
   <p id="notice"><%= notice %></p>
   <div class="row">
@@ -81,6 +92,7 @@
     <% end %>
     <% end %>
   </div>
+
   <div class="col-sm-6">
     <div id="map">Google map will appear here...</div>
     <script type="text/javascript">
@@ -110,5 +122,6 @@
     handler.map.centerOn(marker);
   };
   </script>
+</div>
 </div>
 </div>

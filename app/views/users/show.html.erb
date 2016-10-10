@@ -64,7 +64,9 @@
 <% end %>
 </div>
 <div class="col-sm-3">
-<%= image_tag(@user.avatar.url(:medium)) %>
+<% if !@user.avatar_file_name.nil? %>
+  <%= image_tag(@user.avatar.url(:medium)) %>
+<% end %>
 </div>
 </div>
 <br>
