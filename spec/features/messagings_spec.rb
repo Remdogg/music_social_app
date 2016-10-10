@@ -5,9 +5,9 @@ RSpec.feature "Messagings", type: :feature do
   context 'Sending Message' do
    Steps 'Send a message' do
      Given 'I am signed in' do
-       sign_up('jack@email.com', 'password', 'jack', 'smith')
+       sign_up('jack@email.com', 'password', 'password', 'jack', 'smith')
        click_link('Logout')
-       sign_up('mackenzie@email.com', 'password', 'mackenzie', 'pickles')
+       sign_up('mackenzie@email.com', 'password', 'password', 'mackenzie', 'pickles')
        end
       Then 'I can send a message to a user by clicking a link on their profile page' do
        visit '/users'
