@@ -18,6 +18,7 @@
   </thead>
 
   <tbody>
+    <% if !@bandtogethers.nil?%>
     <% @bandtogethers.each do |bandtogether| %>
       <tr>
         <td><a href = 'bandtogethers/<%=bandtogether.id %>'><%= bandtogether.title %></a></td>
@@ -34,6 +35,7 @@
           <% if bandtogether.organizer_id == current_user.id || (current_user.has_role? :admin) %>
             <td><%= link_to 'Edit', edit_bandtogether_path(bandtogether) %></td>
             <td><%= link_to 'Destroy', bandtogether, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           <% end %>
         <%end%>
       </tr>

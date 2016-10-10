@@ -23,8 +23,18 @@
         <%= f.submit "Log in", class: 'btn btn-default btn-block' %>
       </div>
     <% end %>
+
+    <div class="sidebar">
+      <h2><span>or</span></h2>
+    </div>
+  <br>
+
+    <div class="btn btn-primary btn-block white">
+      <%= link_to '<i class="fa fa-facebook" aria-hidden="true"></i> Continue with Facebook'.html_safe, user_facebook_omniauth_authorize_path %>
+    </div>
+
   </div>
-  
+
   <div class = "col-sm-4">
     <%= render "devise/shared/links" %>
   </div>

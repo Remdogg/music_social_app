@@ -28,10 +28,11 @@ has_many :bandtogethers, through: :memberships
 has_many :memberships
 
 #paperclip
+
 has_many :pictures
 
+has_attached_file :avatar, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/default_avatar.jpg"
 
-has_attached_file :avatar, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/missing.png"
 validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
@@ -72,6 +73,7 @@ validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
       user.password = Devise.friendly_token[0,20]
       user.first_name = auth.info.first_name   # assuming the user model has a name
       user.last_name = auth.info.last_name
+
       # user.image = auth.info.image # assuming the user model has an image
     end
   end

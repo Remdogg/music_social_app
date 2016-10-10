@@ -1,6 +1,9 @@
+
+
 <div class="panel panel-default">
 <div class="row">
 <div class="col-sm-9">
+  <p id="notice"><%= notice %></p>
 
 <h2><%=@user.first_name%> <%=@user.last_name%></h2>
 
@@ -64,7 +67,9 @@
 <% end %>
 </div>
 <div class="col-sm-3">
-<%= image_tag(@user.avatar.url(:medium)) %>
+<% if !@user.avatar_file_name.nil? %>
+  <%= image_tag(@user.avatar.url(:medium)) %>
+<% end %>
 </div>
 </div>
 <br>
