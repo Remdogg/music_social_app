@@ -11,3 +11,12 @@
   font-weight: bolder;
   margin-bottom: 20px;
 }
+
+.invite-join-buttons {
+  float:left;
+  margin: 5px;
+}
+
+.bandtogether-pic {
+  margin-top: 10px;
+}

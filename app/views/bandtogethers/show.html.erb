@@ -3,9 +3,17 @@
 
 <div class="panel panel-default">
   <div class="row title">
+  <a href="/concerts/<%=@concert.id%>">Back to Concert</a>
     <h2>  <%= @bandtogether.title %> </h2>
     <div class="col-sm-7">
-      <p>
+
+        <% if !@bandtogether.bandtogether_avatar_file_name.nil? %>
+        <div class="clearfix bandtogether-pic">
+        <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium), class: 'clearfix') %>
+        </div>
+        <br>
+        <% end %>
+        <p>
         <strong>Concert:</strong>
         <%= @bandtogether.concert.title %>
       </p>
@@ -46,20 +54,24 @@
       <%end%>
     </p>
     <div class="col-sm-5">
-      <a class="btn btn-default btn-sm" href="/bandtogethers/<%=@bandtogether.id%>/invite">Invite</a>
-      <br>
-      <% if !@bandtogether.bandtogether_avatar_file_name.nil? %>
-      <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium)) %>
-      <% end %>
-      <br>
+
+      <a class="btn btn-default invite-join-buttons" href="/bandtogethers/<%=@bandtogether.id%>/invite">Invite</a>
       <% if @bandtogether.organizer == current_user %>
       <%else%>
-      <%= render 'components/join_button' %>
+        <%= render 'components/join_button' %>
       <% end %>
+      <br>
+
+
+      <br>
+
     </div>
     <br>
+    <div class="clearfix">
+
     <%= commontator_thread(@bandtogether) %>
+      </div>
     <br>
   </div>
-  <a href="/concerts/<%=@concert.id%>">Back to Concert</a>
+
 </div>
