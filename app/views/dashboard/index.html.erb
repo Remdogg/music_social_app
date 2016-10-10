@@ -6,6 +6,17 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="well textcenter">
+      <h3 class="dashheader"> Activity Feed </h3>
+      <% @activities.each do |activity| %>
+      <div class="activity">
+        <%= link_to activity.owner.first_name, activity.owner if activity.owner%>
+        <%= render_activity activity %>
+      </div>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="col-sm-3 panel panel-default textcenter scroll">
       <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
       <br>
       <% @bandtogethers.each do |bandtogether| %>
@@ -16,29 +27,9 @@
         Attending:
         <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %></p>
         <% end %>
-      </div>
     </div>
 
-    <div class="col-sm-1"></div>
-    <div class="col-sm-4 panel panel-default textcenter">
-      <h3 class="dashheader"> Activity Feed </h3>
-      <% @activities.each do |activity| %>
-      <div class="activity">
-        <%= link_to activity.owner.first_name, activity.owner if activity.owner%>
-        <%= render_activity activity %>
-      </div>
-      <% end %>
-      <div class="col-sm-1"></div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6 panel panel-default">
-        <h3 class="dashheader">Create a New Bandtogether</h3>
-        <%= render '/bandtogethers/form' %>
-      </div>
-
-      <div class="col-sm-1"></div>
-      <div class="col-sm-4 well textcenter">
+      <div class="col-sm-2 panel panel-default">
         <h3 class="dashheader">
           People You're Following</h3>
           <% if @users.any? %>
@@ -52,5 +43,10 @@
             <% end %>
           </div>
         </div>
-        <div class="col-sm-1"></div>
+
+    <div class="row">
+      <div class="well textcenter">
+        <h3 class="dashheader">Create a New Bandtogether</h3>
+        <%= render '/bandtogethers/form' %>
+          </div>
       </div>
