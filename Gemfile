@@ -45,7 +45,7 @@ gem 'omniauth-facebook'
 # gem for searching
 gem 'textacular', '~> 3.0'
 # gem for paperclip
-gem 'paperclip'
+gem 'paperclip', '~> 5.1.0'
 
 #gems for mailboxer
 gem 'mailboxer'

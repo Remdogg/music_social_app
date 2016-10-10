@@ -4,11 +4,61 @@
 
 
 .jumbotron {
-  background-image: url('https://hd.unsplash.com/photo-1470229538611-16ba8c7ffbd7');
+  background-image: url('jumbotron.jpg');
+  background-position: center;
   background-size: cover;
   width: 100%;
   height: 500px;
-  font-family: 'Megrim', cursive;
   color: white;
   font-weight: bolder;
 }
+
+.jumbotron h1 {
+  font-family: 'Megrim', cursive;
+}
+
+.jumbotron .btn {
+  width: 175px;
+  background-color: #373854;
+  border-color: white;
+
+}
+
+.jumbotron .btn a {
+  color: white;
+}
+
+.jumbotron .btn a:hover, .jumbotron .btn a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+
+/*
+.sidebar h2 {
+  position: relative;
+  text-align: center;
+}
+
+.sidebar h2 span {
+  background: #fff;
+  padding: 0 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar h2:before {
+  background: #ddd;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+    top: 50%;
+  width: 100%;
+}
+
+.sidebar h2:before {
+  left: 0;
+}*/

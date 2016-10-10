@@ -2,6 +2,12 @@
 <div class="jumbotron">
   <div class="container">
     <h1>Bandtogether</h1>
+    <div class="btn btn-primary">
+      <%= link_to '<i class="fa fa-facebook" aria-hidden="true"></i> Join with Facebook'.html_safe, user_facebook_omniauth_authorize_path %>
+    </div>
+    <div class="btn btn-primary">
+      <%= link_to '<i class="fa fa-envelope" aria-hidden="true"></i> Join with Email'.html_safe, new_user_registration_path  %>
+    </div>
   </div>
 </div>
 <div><!--reopens container div from layout-->

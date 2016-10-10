@@ -1,9 +1,13 @@
-<h2>Sign up</h2>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   <div class = "row">
-    <div class = "col-sm-8">
+    <div class = "col-sm-3">
+
+    </div>
+    <div class = "col-sm-6">
+      <h2>Sign up</h2>
       <div class="form-group">
         <%= f.label :first_name, class: "col-sm-2 control-label"  %><br />
         <%= f.text_field :first_name, class: "form-control"%>
@@ -35,10 +39,25 @@
       <div class="actions">
         <%= f.submit "Sign up", class: 'btn btn-primary btn-block' %>
       </div>
-    </div>
+
 
   <% end %>
-  <div class = "col-sm-4">
-    <%= render "devise/shared/links" %>
+
+<br>
+<p class="center">
+  Already a member?
+</p>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="actions center">
+    <br>
+    <%= f.submit "Sign in", class: 'btn btn-primary btn-block sign-in' %>
+  </div>
+  <% end %>
+
+</div>
+
+
+  <div class = "col-sm-3">
+
   </div>
 <div>
