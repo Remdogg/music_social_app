@@ -10,19 +10,17 @@
 <section class="stats">
    <%= render 'shared/stats' %>
  </section>
+ <br>
 <%= render 'components/follow_button' if user_signed_in? %>
-
+<br>
 <% unless current_user == @user %>
        <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-default btn-sm' %>
     <%end%>
 
 <br>
-
-
 <% if @user == current_user %>
   <%= link_to 'Edit Profile', edit_user_registration_path %>
 <% end %>
-<br>
 <br>
 
 

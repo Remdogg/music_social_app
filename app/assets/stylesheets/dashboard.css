@@ -1,5 +1,5 @@
 .dash-name{
-  background-image: url('https://hd.unsplash.com/photo-1453090927415-5f45085b65c0');
+  background-image: url('https://hd.unsplash.com/photo-1470229538611-16ba8c7ffbd7');
   height: 150px;
   width: 100%;
   background-size: cover;
@@ -24,4 +24,18 @@
   text-shadow: 1px 1px black;
   text-align: center;
   padding-bottom: 10px;
+}
+
+.dashheader {
+  color: #432976;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.textcenter {
+  text-align: center;
+}
+
+.textcenter > h4 {
+  font-weight: bolder;
 }

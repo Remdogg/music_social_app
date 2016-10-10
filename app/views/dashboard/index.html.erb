@@ -6,8 +6,8 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <div class="well">
-      <h3>Your Upcoming Bandtogethers</h3>
+    <div class="well textcenter">
+        <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
       <br>
       <% @bandtogethers.each do |bandtogether| %>
       <h4><%= link_to bandtogether.title, bandtogether %></h4>
@@ -22,8 +22,8 @@
 
     <div class="col-sm-1"></div>
 
-    <div class="col-sm-4 panel panel-default">
-      <h3>People You're Following</h3>
+    <div class="col-sm-4 panel panel-default textcenter">
+      <h3 class="dashheader">People You're Following</h3>
       <% if @users.any? %>
       <% @user.following.ids.each do |id| %>
       <% @name = User.find(id) %>
@@ -39,7 +39,7 @@
 
     <div class="row">
       <div class="col-sm-6 panel panel-default">
-        <h3>Create a New Bandtogether</h3>
+        <h3 class="dashheader">Create a New Bandtogether</h3>
         <%= render '/bandtogethers/form' %>
       </div>
 
