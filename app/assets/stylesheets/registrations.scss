@@ -1,3 +1,13 @@
 // Place all the styles related to the Registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sign-in {
+  background-color: green;
+  color: black;
+  border-color: blue;
+}
+
+.sign-in:hover {
+background-color: lightgrey;
+}

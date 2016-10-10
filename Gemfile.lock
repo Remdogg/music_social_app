@@ -284,7 +284,7 @@ DEPENDENCIES
   launchy
   mailboxer
   omniauth-facebook
-  paperclip
+  paperclip (~> 5.1.0)
   pg (~> 0.15)
   rails (= 4.2.6)
   rolify
