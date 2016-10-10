@@ -39,10 +39,8 @@ validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_presence_of :first_name
   validates_presence_of :last_name
 
-  validates_presence_of :city, on: :update
-  validates_presence_of :state, on: :update
-  validates :city, length: {minimum: 2 }, on: :update
-  validates :state, length: { minimum: 2 }, on: :update
+
+  
 
          # helpers methods
 
