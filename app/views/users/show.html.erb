@@ -4,8 +4,10 @@
 
 <h2><%=@user.first_name%> <%=@user.last_name%></h2>
 
-<% if !current_user.city.nil? || !current_user.state.nil? %>
-  <h3> <%= [current_user.city, current_user.state].join(', ')%></h3>
+<% if current_user.city.present? && current_user.state.present? %>
+  <% if !current_user.city.nil? || !current_user.state.nil? %>
+    <h3> <%= [current_user.city, current_user.state].join(', ')%></h3>
+  <% end %>
 <% end %>
 
 

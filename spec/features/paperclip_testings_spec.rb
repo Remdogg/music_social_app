@@ -22,7 +22,6 @@ RSpec.feature "PaperclipTestings", type: :feature do
         fill_in("user_postal_code", :with => '92020')
         fill_in("user_about", :with => 'kdjgkfjsgjfgskjfds')
         fill_in("user_artists", :with => 'kdjhfsdhfskh')
-        fill_in("user_current_password", :with => 'password')
         click_button('Update')
         expect(page).to have_selector('img')
       end
@@ -49,7 +48,6 @@ RSpec.feature "PaperclipTestings", type: :feature do
             fill_in("user_postal_code", :with => '92020')
             fill_in("user_about", :with => 'kdjgkfjsgjfgskjfds')
             fill_in("user_artists", :with => 'kdjhfsdhfskh')
-            fill_in("user_current_password", :with => 'password')
             click_button('Update')
             expect(page).to have_selector('img')
           end

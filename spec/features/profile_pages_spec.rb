@@ -27,7 +27,6 @@ RSpec.feature "ProfilePages", type: :feature do
         fill_in("user_postal_code", :with => '92020')
         fill_in("user_about", :with => 'kdjgkfjsgjfgskjfds')
         fill_in("user_artists", :with => 'kdjhfsdhfskh')
-        fill_in("user_current_password", :with => 'password')
         click_button('Update')
       end
       Then 'I can view my profile page with my information' do
@@ -42,7 +41,7 @@ RSpec.feature "ProfilePages", type: :feature do
         expect(page).to have_content('kdjhfsdhfskh')
 
       end
-      
+
       Then 'I can create a bandtogether from my dashboard page' do
         visit '/'
         fill_in("Title", :with => 'Tswizzle')
