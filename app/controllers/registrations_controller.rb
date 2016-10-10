@@ -14,7 +14,7 @@ end
 
 
 def edit
-  
+
   @pictures = @user.pictures
   render :edit
 
@@ -37,11 +37,6 @@ def update
               self.resource.pictures << pics
             end
           end
-
-
-
-
-
 
       if is_flashing_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
