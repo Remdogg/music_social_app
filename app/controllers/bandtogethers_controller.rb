@@ -96,9 +96,6 @@ class BandtogethersController < ApplicationController
   def destroy
     if @bandtogether.organizer_id == current_user.id
       @bandtogether.destroy
-      #add to newsfeed
-      @bandtogether.create_activity :destroy, owner: current_user
-
       respond_to do |format|
         format.html { redirect_to bandtogethers_url, notice: 'Bandtogether was successfully destroyed.' }
         format.json { head :no_content }
