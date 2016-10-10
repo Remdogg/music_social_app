@@ -1,121 +1,116 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @concert.title %>
-</p>
+<div class="header">
+  <h1><%= @concert.title %></h1>
+</div>
 
-<p>
-  <strong>Start:</strong>
-  <%= @concert.start %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @concert.end %>
-</p>
-
-<p>
-  <strong>Artist:</strong>
-  <%= @concert.artist %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @concert.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @concert.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @concert.state %>
-</p>
-<% if current_user.has_role? :admin %>
-<%= link_to 'Edit', edit_concert_path(@concert) %> |
-<% end %>
-<%= link_to 'Back', concerts_path %>
-
-<%= form_for(@bandtogether) do |f| %>
-  <% if @bandtogether.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bandtogether.errors.count, "error") %> prohibited this bandtogether from being saved:</h2>
-
-      <ul>
-      <% @bandtogether.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <br>
-
-  <div class="form-group">
-    <%= f.label :bandtogether_avatar %>
-    <%= f.file_field :bandtogether_avatar %>
-  </div>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.text_field :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.text_field :end_time %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= hidden_field(:bandtogether, :concert_id, value: @bandtogether.concert.id) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<h3>Bandtogethers for <%=@concert.title%></h3>
-
-<p>
-  <ul>
-    <% @concert.bandtogethers.each do |bandtogether| %>
-      <div class="listing">
-        <li>
-          <h4><%= link_to bandtogether.title, bandtogether %></h4>
-          <strong><%= bandtogether.start_time%><h6></strong>
-          Attending:
-          <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %>
-          <br>
-          <br>
-
-        </li>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default center">
+      <p>
+        <strong>Artist(s):</strong>
+        <%= @concert.artist %>
+      </p>
+      <p>
+        <strong>Start:</strong>
+        <%= @concert.start.strftime("%I:%M") %>
+        <strong>End:</strong>
+        <%= @concert.end.strftime("%I:%M") %>
+      </p>
+      <p>
+        <strong>Location:</strong>
+        <%= @concert.address %>, <%= @concert.city %>, <%= @concert.state %>
+      </p>
+      <p><% if current_user.has_role? :admin %>
+        <%= link_to 'Edit Concert Info', edit_concert_path(@concert) %>
+        <% end %></p>
       </div>
-    <% end %>
-  </ul>
-</p>
 
-<div id="map">Google map will appear here...</div>
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({
-    provider: {},
-    internal: {id: 'map'}
-  },
-  function() {
-    markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setZoom(12);
-  }
-);
-</script>
+
+
+      <div class="panel panel-default center">
+      <h3>Bandtogethers for <%=@concert.title%></h3>
+          <% @concert.bandtogethers.each do |bandtogether| %>
+          <div class="bandtogether">
+              <h4><%= link_to bandtogether.title, bandtogether %></h4>
+              <p><%= bandtogether.start_time%> |
+              Attending:
+                <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %></p>
+                <br>
+            </div>
+            <% end %>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div id="map">Google map will appear here...</div>
+      <script type="text/javascript">
+      handler = Gmaps.build('Google');
+      handler.buildMap({
+        provider: {},
+        internal: {id: 'map'}
+      },
+      function() {
+        markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(12);
+      }
+    );
+    </script>
+  </div>
+
+
+  </div>
+
+  <div class="row">
+      <div class="well">
+        <h3> Create a new Bandtogether for this concert:</h3>
+        <%= form_for(@bandtogether) do |f| %>
+        <% if @bandtogether.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@bandtogether.errors.count, "error") %> prohibited this bandtogether from being saved:</h2>
+
+          <ul>
+            <% @bandtogether.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <br>
+
+        <div class="form-group">
+          <%= f.label :bandtogether_avatar, class:"control-label"%>
+          <%= f.file_field :bandtogether_avatar, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :title, class:"control-label" %><br>
+          <%= f.text_field :title, class:"form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :start_time, class:"control-label" %><br>
+          <%= f.text_field :start_time, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :end_time, class:"control-label" %><br>
+          <%= f.text_field :end_time, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, class:"control-label" %><br>
+          <%= f.text_area :description, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= hidden_field(:bandtogether, :concert_id, value: @bandtogether.concert.id) %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit class:"btn btn-default btn-block"%>
+        </div>
+        <% end %>
+    </div>
+  </div>
+
+  <%= link_to 'Back to Concerts', concerts_path %>

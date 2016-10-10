@@ -1,87 +1,106 @@
-</div> <!--this closes the container div from layout-->
+
 <div class="jumbotron">
-  <div class="container">
-    <h1>Bandtogether</h1>
+  <div class="row">
+    <div class="jumbo col-sm-7">
+      <h1>Bandtogether</h1>
+    </div>
+
+    <div class="box col-sm-5">
+      <h2> How It Works </h2>
+      <h3> <i class="fa fa-headphones" aria-hidden="true"></i>
+        Find Concerts You're Attending
+        <br>
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        Join or Create a bandtogether
+        <br>
+        <i class="fa fa-users" aria-hidden="true"></i>
+        Make New Friends </h3>
+    </div>
   </div>
 </div>
-<div><!--reopens container div from layout-->
 
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="well">
 
-<h1>Upcoming Concerts</h1>
-<form action="/concerts" method="get">
- <input type="text" name="search">
- <input type="submit" value="Search" >
-</form>
+        <h1>Upcoming Concerts</h1>
+        <br>
+        <form action="/concerts" method="get">
+          <input type="text" name="search">
+          <input type="submit" value="Search" >
+        </form>
+      </br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Artist</th>
+            <th>City</th>
+            <th>State</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Start</th>
-      <th>End</th>
-      <th>Artist</th>
-      <th>City</th>
-      <th>State</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @concerts.each do |concert| %>
+          <tr>
+            <td><a href = 'concerts/<%=concert.id %>'><%= concert.title %></a></td>
+            <td><%= concert.start.strftime("%I:%M") %></td>
+            <td><%= concert.end.strftime("%I:%M") %></td>
+            <td><%= concert.artist %></td>
+            <td><%= concert.city %></td>
+            <td><%= concert.state %></td>
+            <% if !current_user.nil? %>
+            <% if current_user.has_role? :admin %>
+            <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
+            <td><%= link_to 'Destroy', concert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-  <tbody>
-    <% @concerts.each do |concert| %>
-      <tr>
-        <td><%= concert.title %></td>
-        <td><%= concert.start %></td>
-        <td><%= concert.end %></td>
-        <td><%= concert.artist %></td>
-        <td><%= concert.city %></td>
-        <td><%= concert.state %></td>
-        <td><%= link_to 'Show', concert %></td>
-        <% if !current_user.nil? %>
-        <% if current_user.has_role? :admin %>
-        <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
-        <td><%= link_to 'Destroy', concert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        <% end %>
-      </tr>
+    <br>
+
+    <% if !current_user.nil? %>
+    <% if current_user.has_role? :admin %>
+    <%= link_to 'New Concert', new_concert_path %>
     <% end %>
-  </tbody>
-</table>
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+    <div id="map">Google map will appear here...</div>
+    <script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+      provider: {},
+      internal: {id: 'map'}
+    },
+    function() {
+      markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(8);
+      if(navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(displayOnMap);
 
+    }
+  );
+  function displayOnMap(position){
+    var marker = handler.addMarker({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
 
-<br>
-
-<% if !current_user.nil? %>
-<% if current_user.has_role? :admin %>
-<%= link_to 'New Concert', new_concert_path %>
-<% end %>
-<% end %>
-
-<div id="map">Google map will appear here...</div>
-         <script type="text/javascript">
-         handler = Gmaps.build('Google');
-         handler.buildMap({
-           provider: {},
-           internal: {id: 'map'}
-         },
-         function() {
-           markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
-           handler.bounds.extendWith(markers);
-           handler.fitMapToBounds();
-           handler.getMap().setZoom(8);
-           if(navigator.geolocation)
-           navigator.geolocation.getCurrentPosition(displayOnMap);
-
-         }
-       );
-       function displayOnMap(position){
-         var marker = handler.addMarker({
-           lat: position.coords.latitude,
-           lng: position.coords.longitude
-
-         });
-         var image = '<%= asset_path 'map-person.png' %>';
-         marker.serviceObject.icon = image;
-         handler.map.centerOn(marker);
-       };
-       </script>
+    });
+    var image = '<%= asset_path 'map-person.png' %>';
+    marker.serviceObject.icon = image;
+    handler.map.centerOn(marker);
+  };
+  </script>
+</div>
+</div>

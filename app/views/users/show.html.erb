@@ -1,38 +1,26 @@
-
-
-
-
-<br>
+<div class="panel panel-default">
 <div class="row">
-<div class=".col-sm-6">
+<div class="col-sm-9">
 
-
-</div>
-</div>
-
-
-<h2><%=@user.first_name%> <%=@user.last_name%></h2> <%= image_tag(@user.avatar.url(:medium)) %>
+<h2><%=@user.first_name%> <%=@user.last_name%></h2>
 
 <p><%=@user.city%>, <%=@user.state%></p>
-
 
 
 <section class="stats">
    <%= render 'shared/stats' %>
  </section>
+ <br>
 <%= render 'components/follow_button' if user_signed_in? %>
-
+<br>
 <% unless current_user == @user %>
        <%= link_to 'Send message', new_message_path(to: @user.id), class: 'btn btn-default btn-sm' %>
     <%end%>
 
 <br>
-
-
 <% if @user == current_user %>
   <%= link_to 'Edit Profile', edit_user_registration_path %>
 <% end %>
-<br>
 <br>
 
 
@@ -71,7 +59,11 @@
     <h5><%=@user.artists%></h5>
   <% end %>
 <% end %>
-
+</div>
+<div class="col-sm-3">
+<%= image_tag(@user.avatar.url(:medium)) %>
+</div>
+</div>
 <br>
 <br>
 
@@ -107,3 +99,4 @@
     <% end %>
   </tbody>
 </table>
+</div>

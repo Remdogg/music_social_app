@@ -1,17 +1,26 @@
 #map {
   height: 400px;
   width: 500px;
+  margin: 20px 20px 20px 20px;
 }
 
-// .comment_avatar {
-//   visibility: hidden;
-// }
+.well {
+  padding: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 20px;
+}
+
+
+.panel {
+  padding: 20px 20px 20px 20px;
+  margin: 20px 20px 20px 20px;
+}
+
 
 
 body {
-  background-color: #fff;
+  background-color: #f7f7f7;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Maven Pro', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }

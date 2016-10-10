@@ -18,5 +18,5 @@
     <%= text_area_tag 'message[body]', 'Go to this website to view this awesome event! http://localhost:3000/bandtogethers/' + @bandtogether.id.to_s , cols: 3, class: 'form-control', required: true %>
   </div>
 
-  <%= submit_tag 'Send', class: 'btn btn-primary' %>
+  <%= submit_tag 'Send', class: 'btn btn-default' %>
 <% end %>

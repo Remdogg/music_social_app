@@ -12,3 +12,39 @@
   color: white;
   font-weight: bolder;
 }
+
+.jumbo > h1 {
+  font-size: 80px;
+  font-family: 'Megrim', cursive;
+  font-weight: 900;
+  text-shadow: 2px 2px black;
+}
+
+.box {
+  background-color: rgba(0,0,0,0.2);
+  text-align: center;
+  color: #00ffff;
+  padding: 10px 10px 10px 10px;
+}
+
+.header {
+  text-align: center;
+  background-image: url('https://hd.unsplash.com/17/unsplash_5252bb51404f8_1.JPG');
+  background-position: center;
+  background-size: cover;
+  color: black;
+  height: 100px;
+}
+
+.header > h1 {
+  font-size: 80px;
+  font-family: 'Megrim', cursive;
+  font-weight: 900;
+  text-shadow: 2px 2px white;
+}
+
+.center{
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  margin: 20px 20px 20px 20px;
+}
