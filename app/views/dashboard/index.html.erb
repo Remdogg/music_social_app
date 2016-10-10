@@ -1,4 +1,3 @@
-
 <div class="dash-name">
   <h2>Welcome, <%=current_user.first_name%>! </h2>
   <h3><%=current_user.city%>, <%=current_user.state%></h3>
@@ -7,7 +6,7 @@
 <div class="row">
   <div class="col-sm-6">
     <div class="well textcenter">
-        <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
+      <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
       <br>
       <% @bandtogethers.each do |bandtogether| %>
       <h4><%= link_to bandtogether.title, bandtogether %></h4>
@@ -21,19 +20,14 @@
     </div>
 
     <div class="col-sm-1"></div>
-
     <div class="col-sm-4 panel panel-default textcenter">
-      <h3 class="dashheader">People You're Following</h3>
-      <% if @users.any? %>
-      <% @user.following.ids.each do |id| %>
-      <% @name = User.find(id) %>
-      <div class="listing">
-        <li> <%= image_tag(@name.avatar.url(:thumb)) %>
-          <a href="/users/<%=@name.id%>"><%= @name.first_name %> <%= @name.last_name %></a> </li>
-        </div>
-        <% end %>
-        <% end %>
+      <h3 class="dashheader"> Activity Feed </h3>
+      <% @activities.each do |activity| %>
+      <div class="activity">
+        <%= link_to activity.owner.first_name, activity.owner if activity.owner%>
+        <%= render_activity activity %>
       </div>
+      <% end %>
       <div class="col-sm-1"></div>
     </div>
 
@@ -44,6 +38,19 @@
       </div>
 
       <div class="col-sm-1"></div>
-      <div class="col-sm-4 well"><br><br><br></div>
-      <div class="col-sm-1"></div>
-    </div>
+      <div class="col-sm-4 well textcenter">
+        <h3 class="dashheader">
+          People You're Following</h3>
+          <% if @users.any? %>
+          <% @user.following.ids.each do |id| %>
+          <% @name = User.find(id) %>
+          <div class="listing">
+            <li> <%= image_tag(@name.avatar.url(:thumb)) %>
+              <a href="/users/<%=@name.id%>"><%= @name.first_name %> <%= @name.last_name %></a> </li>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-sm-1"></div>
+      </div>

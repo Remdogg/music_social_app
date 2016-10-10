@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  #newsfeed
+  resources :activities
 
 #mailboxer
   resources :conversations, only: [:index, :show, :destroy] do
