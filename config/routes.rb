@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  #newsfeed
+  resources :activities
 
   resources :pictures
 #mailboxer

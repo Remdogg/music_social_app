@@ -1,4 +1,9 @@
 class Bandtogether < ActiveRecord::Base
+  #newsfeed gem
+  include PublicActivity::Common
+  # tracked owner: ->(controller, model) {controller && controller.current_user}
+
+
 
   resourcify
 

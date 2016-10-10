@@ -60,8 +60,12 @@ gem 'gmaps4rails'
 # cancan rolify
 gem 'cancancan'
 gem 'rolify'
+
+gem 'public_activity'
+
 #for generation of image galleries
 gem 'hermitage'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

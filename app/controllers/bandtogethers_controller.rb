@@ -63,6 +63,9 @@ class BandtogethersController < ApplicationController
 
     respond_to do |format|
       if @bandtogether.save
+        #add to newsfeed
+        @bandtogether.create_activity :create, owner: current_user
+
         format.html { redirect_to @bandtogether, notice: 'Bandtogether was successfully created.' }
         format.json { render :show, status: :created, location: @bandtogether }
       else
@@ -77,6 +80,9 @@ class BandtogethersController < ApplicationController
   def update
     respond_to do |format|
       if @bandtogether.update(bandtogether_params)
+        #add to newsfeed
+        @bandtogether.create_activity :update, owner: current_user
+
         format.html { redirect_to @bandtogether, notice: 'Bandtogether was successfully updated.' }
         format.json { render :show, status: :ok, location: @bandtogether }
       else
