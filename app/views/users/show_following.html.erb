@@ -12,15 +12,11 @@
     <h3><%= @title %></h3>
     <table>
       <tbody>
-          <% if @users.any? %>
-          <% @users = User.find(params[:id])%>
-          <% @users.following.ids.each do |id| %>
-          <% @name = User.find(id) %>
+          <% @user.following.each do |following| %>
           <tr>
-            <td><a href="/users/<%=@name.id%>"><%= @name.email %></a></td>
+            <td><a href="/users/<%=following.id%>"> <%=following.email%> </a></td>
           </tr>
           <% end %>
-        <% end %>
     </tbody>
   </table>
   </div>

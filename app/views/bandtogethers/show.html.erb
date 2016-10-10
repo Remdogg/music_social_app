@@ -30,7 +30,7 @@
     <p>
       <strong>Going:</strong>
       <!-- Adding one to the membership count to include organizer -->
-      <%= Membership.where(bandtogether_id: @bandtogether.id).count + 1%>
+      <%= @bandtogether.memberships.count + 1%>
     </p>
     <p>
       <li>
@@ -48,19 +48,18 @@
     <div class="col-sm-5">
       <a class="btn btn-default btn-sm" href="/bandtogethers/<%=@bandtogether.id%>/invite">Invite</a>
       <br>
+      <% if !@bandtogether.bandtogether_avatar_file_name.nil? %>
       <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium)) %>
+      <% end %>
       <br>
       <% if @bandtogether.organizer == current_user %>
       <%else%>
       <%= render 'components/join_button' %>
       <% end %>
     </div>
+    <br>
+    <%= commontator_thread(@bandtogether) %>
+    <br>
   </div>
+  <a href="/concerts/<%=@concert.id%>">Back to Concert</a>
 </div>
-
-<br>
-<%= commontator_thread(@bandtogether) %>
-<br>
-
-
-<a href="/concerts/<%=@concert.id%>">Back to Concert</a>

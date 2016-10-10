@@ -9,6 +9,7 @@ class BandtogethersController < ApplicationController
   # GET /bandtogethers.json
   def index
     @bandtogethers = Bandtogether.all
+
   end
 
   # GET /bandtogethers/1
