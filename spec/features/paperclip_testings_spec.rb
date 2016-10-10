@@ -5,7 +5,7 @@ RSpec.feature "PaperclipTestings", type: :feature do
     Steps 'I can sign up and/or sign in and upload an avatar' do
       Given 'I am on the homepage' do
         visit '/'
-        click_link 'Sign Up'
+        click_link 'Join with Email'
         fill_in 'user_first_name', with: 'Jodi'
         fill_in 'user_last_name', with: 'Pickles'
         fill_in 'user_email', with: 'Jodi@email.com'
@@ -31,7 +31,7 @@ RSpec.feature "PaperclipTestings", type: :feature do
         Steps 'Sign in and Uuload an image on the bandtogether form' do
           Given 'I am on the homepage' do
             visit '/'
-            click_link 'Sign Up'
+            click_link 'Join with Email'
             fill_in 'user_first_name', with: 'Jodi'
             fill_in 'user_last_name', with: 'Pickles'
             fill_in 'user_email', with: 'Jodi@email.com'

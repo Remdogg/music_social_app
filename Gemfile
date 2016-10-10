@@ -45,7 +45,7 @@ gem 'omniauth-facebook'
 # gem for searching
 gem 'textacular', '~> 3.0'
 # gem for paperclip
-gem 'paperclip'
+gem 'paperclip', '~> 5.1.0'
 
 #gems for mailboxer
 gem 'mailboxer'
@@ -62,6 +62,10 @@ gem 'cancancan'
 gem 'rolify'
 
 gem 'public_activity'
+
+#for generation of image galleries
+gem 'hermitage'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -82,5 +86,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+
 
 end

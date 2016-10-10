@@ -70,8 +70,7 @@ RSpec.feature "ConcertPages", type: :feature do
         expect(page).to have_content('let loose')
       end
       Then 'I can create another bandtogether' do
-        visit  '/bandtogethers'
-        click_link('New Bandtogether')
+        click_link('Back to Concert')
         fill_in 'bandtogether_title', with: 'I got 3 spots in my car'
         fill_in 'bandtogether_start_time', with: '3pm'
         fill_in 'bandtogether_end_time', with: '5pm'

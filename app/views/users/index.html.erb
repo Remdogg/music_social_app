@@ -17,7 +17,12 @@
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td><%= image_tag(user.avatar.url(:thumb)) %></td>
+      <% if !user.avatar_file_name.nil? %>
+        <td><%= image_tag(user.avatar.url(:thumb)) %></td>
+        <%else%>
+        <td>
+        </td>
+      <%end%>
       <td><a href='users/<%=user.id%>'><%= user.first_name%> <%= user.last_name%></a>
       </td>
       <td>

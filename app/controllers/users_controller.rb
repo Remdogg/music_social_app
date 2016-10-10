@@ -67,8 +67,9 @@ class UsersController < ApplicationController
   def show
     if user_signed_in?
       @user = User.find(params[:id])
+      @pictures = @user.pictures
       @bandtogether = Bandtogether.new
-
+      
       @bandtogethers = Bandtogether.where(organizer_id: @user.id)
 
       @concerts_for_select = Concert.all.map do |concert|

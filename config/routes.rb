@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #newsfeed
   resources :activities
 
+  resources :pictures
 #mailboxer
   resources :conversations, only: [:index, :show, :destroy] do
     collection do

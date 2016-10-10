@@ -1,6 +1,9 @@
+
+
 <div class="panel panel-default">
 <div class="row">
 <div class="col-sm-9">
+  <p id="notice"><%= notice %></p>
 
 <h2><%=@user.first_name%> <%=@user.last_name%></h2>
 
@@ -26,6 +29,9 @@
   <%= link_to 'Edit Profile', edit_user_registration_path %>
 <% end %>
 <br>
+
+
+
 
 
 <h4>Email</h4>
@@ -65,16 +71,21 @@
 <% end %>
 </div>
 <div class="col-sm-3">
-<%= image_tag(@user.avatar.url(:medium)) %>
+<% if !@user.avatar_file_name.nil? %>
+  <%= image_tag(@user.avatar.url(:medium)) %>
+<% end %>
 </div>
 </div>
 <br>
 <br>
 
+  <%=render_gallery_for @pictures%>
+
+<div class="clearfix">
 
 
 <h3> <%=@user.first_name%>'s Bandtogethers</h3>
-
+</div>
 <table class="table">
   <thead>
     <tr>
