@@ -43,10 +43,10 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-            <li><%= link_to('Users', users_path)%></li>
             <li><%= link_to('Concerts', concerts_path)%></li>
           <% end %>
             <li><%= link_to('BandTogethers', bandtogethers_path)%></li>
+            <li><%= link_to('Bandies', users_path)%></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
@@ -74,7 +74,7 @@
 
               <% if !current_user.avatar_file_name.nil? %>
               <li>
-                <%= image_tag(current_user.avatar.url(:thumb)) %>
+                <%= image_tag(current_user.avatar.url(:thumb), class: 'nav-avatar') %>
               </li>
               <% end %>
 
