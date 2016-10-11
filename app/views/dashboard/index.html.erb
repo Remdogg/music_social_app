@@ -16,7 +16,8 @@
   </div>
 
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-5">
     <div class="well textcenter scrollbaractivity">
       <h3 class="dashheader"> Activity Feed </h3>
       <% @activities.each do |activity| %>
@@ -30,7 +31,7 @@
 
 
 
-    <div class="col-sm-3 panel panel-default textcenter scrollbarb2g">
+    <div class="col-sm-5 panel panel-default textcenter scrollbarb2g">
       <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
       <br>
       <% @bandtogethers.each do |bandtogether| %>
@@ -42,12 +43,12 @@
         <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %></p>
         <% end %>
     </div>
-
+<div class="col-sm-1"></div>
 
         </div>
 
     <div class="row">
-      <div class="well textcenter">
+      <div class="col-sm-6 well textcenter">
         <h3 class="dashheader">Create a New Bandtogether</h3>
         <%= render '/bandtogethers/form' %>
           </div>

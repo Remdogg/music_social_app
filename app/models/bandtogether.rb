@@ -10,7 +10,7 @@ class Bandtogether < ActiveRecord::Base
   belongs_to :concert
   belongs_to :organizer, :class_name => 'User'
   has_many :members, through: :memberships, source: :user
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
 
   #commontator gem
   acts_as_commontable

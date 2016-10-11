@@ -59,6 +59,8 @@ class BandtogethersController < ApplicationController
     @bandtogether.organizer_id = current_user.id
     @upcoming_concerts_for_select = Concert.where("start > ?", Time.now).all.map do |concert|
       [concert.title, concert.id]
+    concert = Concert.where(id: params[:concert])
+    @bandtogether.concert = concert[0]
     end
 
     respond_to do |format|
