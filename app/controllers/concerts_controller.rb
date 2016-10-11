@@ -14,6 +14,7 @@ class ConcertsController < ApplicationController
   def index
      if params[:search].nil? || params[:search].empty?
        @concerts = Concert.all
+       @upcoming_concerts = Concert.where("start > ?", Time.now)
      else
        @concerts = Concert.fuzzy_search(params[:search])
      end

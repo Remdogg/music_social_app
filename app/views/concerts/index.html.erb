@@ -64,7 +64,7 @@
         </thead>
 
         <tbody>
-          <% @concerts.each do |concert| %>
+          <% @upcoming_concerts.each do |concert| %>
           <tr>
             <td><a href = 'concerts/<%=concert.id %>'><%= concert.title %></a></td>
             <td><%= concert.start.strftime("%I:%M") %></td>
@@ -80,6 +80,7 @@
             <% end %>
           </tr>
           <% end %>
+
         </tbody>
       </table>
     </div>
