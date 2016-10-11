@@ -21,6 +21,11 @@
   padding-right: 20px;
 }
 
+.nav-avatar {
+  border-radius: 50%;
+}
+
+
 .clearfix {
   clear: both;
 }
@@ -54,4 +59,23 @@
 
 footer {
   margin: 30px;
+}
+
+.b2g {
+  font-size: 50px;
+  color: grey;
+  padding: 5px;
+  font-family: 'Megrim', 'cursive';
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px #4d2d9c;
+}
+
+.b2g:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-nav li {
+  margin: 5px;
 }

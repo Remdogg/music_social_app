@@ -23,14 +23,15 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
-  # membership/organizer relationship
-  has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id', dependent: :destroy
-  has_many :bandtogethers, through: :memberships
-  has_many :memberships
+
+# membership/organizer relationship
+has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id', dependent: :destroy
+has_many :bandtogethers, through: :memberships
+has_many :memberships, dependent: :destroy
 
   #paperclip
 
-  has_many :pictures
+has_many :pictures, dependent: :destroy
 
   has_attached_file :avatar, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/default_avatar.jpg"
 
@@ -49,6 +50,7 @@ class User < ActiveRecord::Base
     self.first_name = first_name.camelcase
     self.last_name = last_name.camelcase
   end
+
 
   # helpers methods
 

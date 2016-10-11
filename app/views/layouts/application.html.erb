@@ -38,25 +38,25 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to 'b2g', "/", class: "navbar-brand" %>
+          <%= link_to 'B<i class="fa fa-hand-peace-o" aria-hidden="true"></i>g'.html_safe, "/", class: " b2g" %>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
           <% if user_signed_in? %>
-            <li><%= link_to('Users', users_path)%></li>
             <li><%= link_to('Concerts', concerts_path)%></li>
           <% end %>
             <li><%= link_to('BandTogethers', bandtogethers_path)%></li>
+            <li><%= link_to('Bandies', users_path)%></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="/pages/about">About</a>
+            </li>
+
           <% if !user_signed_in? %>
 
 
-              <li>
-                <a href="">How it works</a>
-              </li>
 
               <li>
                 <%= link_to('Login', new_user_session_path)  %>
@@ -74,7 +74,7 @@
 
               <% if !current_user.avatar_file_name.nil? %>
               <li>
-                <%= image_tag(current_user.avatar.url(:thumb)) %>
+                <%= image_tag(current_user.avatar.url(:thumb), class: 'nav-avatar') %>
               </li>
               <% end %>
 
@@ -102,3 +102,11 @@
 </div>
 
 </body>
+<footer>
+  <hr>
+  <div class="row">
+    <div class="col-lg-12 center">
+      <p>Copyright &copy; Goodtimes 2016</p>
+    </div>
+  </div>
+</footer>

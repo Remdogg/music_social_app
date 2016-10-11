@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
-
 .jumbotron {
   background-image: url('jumbotron.jpg');
   background-position: center;
@@ -12,6 +11,30 @@
   color: white;
   font-weight: bolder;
 }
+
+
+.signed_in_jumbo {
+  background-image: url('concerts_page.jpeg');
+  height: 400px;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
+.b2g_jumbo {
+  background-image: url('backs.jpeg');
+  height: 400px;
+  margin-top: 20px;
+}
+
+.users_jumbo {
+  background-image: url('shadows.jpeg');
+  height: 400px;
+  margin-top: 20px;
+  background-position: top;
+}
+
+
+
 
 
 .jumbo > h1 {

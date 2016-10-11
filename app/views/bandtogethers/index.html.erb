@@ -1,10 +1,15 @@
+</div>
 <p id="notice"><%= notice %></p>
 
-<h1>Browse Bandtogethers</h1>
-<% if user_signed_in? %>
-<%= link_to 'New Bandtogether', new_bandtogether_path %>
-<% end %>
-<br>
+<div class="jumbotron b2g_jumbo">
+    <div class="jumbo col-sm-5">
+      <div class="jumbo col-sm-5">
+        <h1>Bandtogethers</h1>
+      </div>
+    </div>
+
+</div>
+<div class="container">
 <table class="table">
   <thead>
     <tr>
@@ -49,3 +54,11 @@
     <% end %>
   </tbody>
 </table>
+
+
+<br>
+<% if user_signed_in? %>
+<%= link_to 'New Bandtogether', new_bandtogether_path %>
+<% end %>
+
+</div>
