@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Browse Bandtogethers</h1>
-
+<% if user_signed_in? %>
+<%= link_to 'New Bandtogether', new_bandtogether_path %>
+<% end %>
+<br>
 <table class="table">
   <thead>
     <tr>
@@ -46,8 +49,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<% if user_signed_in? %>
-<%= link_to 'New Bandtogether', new_bandtogether_path %>
-<% end %>

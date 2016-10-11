@@ -11,7 +11,7 @@ RSpec.feature "Messagings", type: :feature do
        end
       Then 'I can send a message to a user by clicking a link on their profile page' do
        visit '/users'
-       click_link('jack smith')
+       click_link('Jack Smith')
        click_link('Send message')
        fill_in 'message_subject', with: 'Yo'
        fill_in 'message_body', with: 'Hola'
