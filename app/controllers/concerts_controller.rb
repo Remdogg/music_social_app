@@ -30,7 +30,6 @@ class ConcertsController < ApplicationController
   def show
     @user = current_user
     @bandtogether = Bandtogether.new
-
     @bandtogether.concert = Concert.find(params[:id])
     @concerts = Concert.find(params[:id]) #@concerts may also be found using the set_concert method provided by scaffolding
     @pindrop = Gmaps4rails.build_markers(@concerts) do |concert, marker|

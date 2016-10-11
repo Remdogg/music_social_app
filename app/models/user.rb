@@ -25,11 +25,11 @@ acts_as_messageable
 # membership/organizer relationship
 has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id', dependent: :destroy
 has_many :bandtogethers, through: :memberships
-has_many :memberships
+has_many :memberships, dependent: :destroy
 
 #paperclip
 
-has_many :pictures
+has_many :pictures, dependent: :destroy
 
 has_attached_file :avatar, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/default_avatar.jpg"
 
@@ -44,7 +44,7 @@ validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_presence_of :last_name
 
 
-  
+
 
          # helpers methods
 

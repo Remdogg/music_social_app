@@ -105,7 +105,7 @@
       markers = handler.addMarkers(<%=raw @pindrop.to_json %>);
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      handler.getMap().setZoom(8);
+      handler.getMap().setZoom(11);
       if(navigator.geolocation)
       navigator.geolocation.getCurrentPosition(displayOnMap);
 

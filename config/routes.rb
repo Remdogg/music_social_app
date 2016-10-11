@@ -49,6 +49,8 @@ Rails.application.routes.draw do
   get '/bandtogethers/:id/leave(.:format)' => 'users#leave'
   get '/bandtogethers/:id/invite' => 'bandtogethers#invite'
 
+  get '/pages/about' => 'pages#show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
