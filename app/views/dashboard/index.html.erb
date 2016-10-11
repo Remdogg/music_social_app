@@ -10,12 +10,14 @@
     <% end %>
   <% end %>
 
-
-</div>
+  <h5><section class="stats">
+     <%= render 'shared/stats' %>
+   </section></h5>
+  </div>
 
 <div class="row">
   <div class="col-sm-6">
-    <div class="well textcenter">
+    <div class="well textcenter scrollbaractivity">
       <h3 class="dashheader"> Activity Feed </h3>
       <% @activities.each do |activity| %>
       <div class="activity">
@@ -26,11 +28,9 @@
       </div>
     </div>
 
-    <section class="stats">
-       <%= render 'shared/stats' %>
-     </section>
 
-    <div class="col-sm-3 panel panel-default textcenter scroll">
+
+    <div class="col-sm-3 panel panel-default textcenter scrollbarb2g">
       <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
       <br>
       <% @bandtogethers.each do |bandtogether| %>
@@ -43,19 +43,7 @@
         <% end %>
     </div>
 
-      <div class="col-sm-2 panel panel-default">
-        <h3 class="dashheader">
-          People You're Following</h3>
-          <% if @users.any? %>
-          <% @user.following.ids.each do |id| %>
-          <% @name = User.find(id) %>
-          <div class="listing">
-            <li> <%= image_tag(@name.avatar.url(:thumb)) %>
-              <a href="/users/<%=@name.id%>"><%= @name.first_name %> <%= @name.last_name %></a> </li>
-            </div>
-            <% end %>
-            <% end %>
-          </div>
+
         </div>
 
     <div class="row">

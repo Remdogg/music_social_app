@@ -14,7 +14,7 @@
       <tbody>
         <% @user.followers.each do |follower| %>
         <tr>
-          <td><a href="/users/<%=follower.id%>"> <%=follower.email%> </a></td>
+          <td><a href="/users/<%=follower.id%>"> <%=follower.first_name%> <%=follower.last_name%> </a></td>
         </tr>
         <% end %>
 
