@@ -57,7 +57,7 @@ RSpec.feature "Users", type: :feature do
       end
       Then 'I can click on the followers' do
         click_link '1 followers'
-        expect(page).to have_content('remy@gmail.com')
+        expect(page).to have_content('Remy Tan')
       end
       Then 'I can logout' do
         click_link 'Logout'
@@ -78,7 +78,7 @@ RSpec.feature "Users", type: :feature do
       end
       Then 'I can see who he is following' do
         click_link('1 following')
-        expect(page).to have_content('jack@email.com')
+        expect(page).to have_content('Jack Fern')
       end
    end
   end

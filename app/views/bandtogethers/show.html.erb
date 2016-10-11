@@ -7,12 +7,7 @@
     <h2>  <%= @bandtogether.title %> </h2>
     <div class="col-sm-7">
 
-        <% if !@bandtogether.bandtogether_avatar_file_name.nil? %>
-        <div class="clearfix bandtogether-pic">
-        <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium), class: 'clearfix') %>
-        </div>
-        <br>
-        <% end %>
+
         <p>
         <strong>Concert:</strong>
         <%= @bandtogether.concert.title %>
@@ -60,19 +55,18 @@
       <%else%>
         <%= render 'components/join_button' %>
       <% end %>
-      <br>
-
-
-      <br>
-
-    </div>
-    <br>
-    <div class="clearfix">
-
-
-    <%= commontator_thread(@bandtogether) %>
+      <% if !@bandtogether.bandtogether_avatar_file_name.nil? %>
+      <div class="clearfix bandtogether-pic">
+      <%= image_tag(@bandtogether.bandtogether_avatar.url(:medium), class: 'clearfix') %>
       </div>
-    <br>
+      <% end %>
+    </div>
+    </div>
   </div>
 
-</div>
+    <div class="well">
+    <div class="clearfix">
+    <%= commontator_thread(@bandtogether) %>
+    </div>
+  </div>
+    <br>

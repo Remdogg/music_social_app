@@ -1,42 +1,44 @@
 class User < ActiveRecord::Base
+  before_save :capitalize_names
   resourcify
 
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
-# Relationship
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+  # Relationship
 
-has_many :active_relationships,  class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
-has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
-has_many :following, through: :active_relationships,  source: :followed
-has_many :followers, through: :passive_relationships, source: :follower
-
-
+  has_many :active_relationships,  class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
+  has_many :following, through: :active_relationships,  source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
 
-#commontator
-acts_as_commontator
-acts_as_commontable
 
 
-acts_as_messageable
+  #commontator
+  acts_as_commontator
+  acts_as_commontable
+
+
+  acts_as_messageable
+
 
 # membership/organizer relationship
 has_many :bandtogethers_as_organizer, :class_name => 'Bandtogether', :foreign_key => 'organizer_id', dependent: :destroy
 has_many :bandtogethers, through: :memberships
 has_many :memberships, dependent: :destroy
 
-#paperclip
+  #paperclip
 
 has_many :pictures, dependent: :destroy
 
-has_attached_file :avatar, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/default_avatar.jpg"
+  has_attached_file :avatar, :styles => { :medium => "90x90>", :thumb => "50x50#"}, :default_url => "/images/:style/default_avatar.jpg"
 
-validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
 
-# validations
+  # validations
   validates :first_name, length: { minimum: 2 }
   validates :last_name, length: { minimum: 2 }
 
@@ -44,24 +46,28 @@ validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_presence_of :last_name
 
 
+  def capitalize_names
+    self.first_name = first_name.camelcase
+    self.last_name = last_name.camelcase
+  end
 
 
-         # helpers methods
+  # helpers methods
 
-         # Follows a user.
-         def follow(other_user)
-           active_relationships.create(followed_id: other_user.id)
-         end
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
 
-         # Unfollows a user.
-         def unfollow(other_user)
-           active_relationships.find_by(followed_id: other_user.id).destroy
-         end
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
 
-         # Returns true if the current user is following the other user.
-         def following?(other_user)
-           following.include?(other_user)
-         end
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
+  end
 
   attr_accessor :current_password
 

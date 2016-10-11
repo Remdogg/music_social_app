@@ -10,12 +10,15 @@
     <% end %>
   <% end %>
 
-
-</div>
+  <h5><section class="stats">
+     <%= render 'shared/stats' %>
+   </section></h5>
+  </div>
 
 <div class="row">
-  <div class="col-sm-6">
-    <div class="well textcenter">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-5">
+    <div class="well textcenter scrollbaractivity">
       <h3 class="dashheader"> Activity Feed </h3>
       <% @activities.each do |activity| %>
       <div class="activity">
@@ -26,11 +29,7 @@
       </div>
     </div>
 
-    <section class="stats">
-       <%= render 'shared/stats' %>
-     </section>
-
-    <div class="col-sm-3 panel panel-default textcenter scroll">
+    <div class="col-sm-5 panel panel-default textcenter scrollbarb2g">
       <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
       <br>
       <% @bandtogethers.each do |bandtogether| %>
@@ -42,25 +41,62 @@
         <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %></p>
         <% end %>
     </div>
-
-      <div class="col-sm-2 panel panel-default">
-        <h3 class="dashheader">
-          People You're Following</h3>
-          <% if @users.any? %>
-          <% @user.following.ids.each do |id| %>
-          <% @name = User.find(id) %>
-          <div class="listing">
-            <li> <%= image_tag(@name.avatar.url(:thumb)) %>
-              <a href="/users/<%=@name.id%>"><%= @name.first_name %> <%= @name.last_name %></a> </li>
-            </div>
-            <% end %>
-            <% end %>
-          </div>
-        </div>
+    <div class="col-sm-1"></div>
+  </div>
 
     <div class="row">
-      <div class="well textcenter">
+      <div class="col-sm-5 panel panel-default center-block">
         <h3 class="dashheader">Create a New Bandtogether</h3>
         <%= render '/bandtogethers/form' %>
           </div>
-      </div>
+          <div class="col-sm-1"></div>
+
+      <div class="col-sm-6 well">
+      <h3 class="dashheader">Upcoming Concerts</h3>
+      <br>
+      <form action="/concerts" method="get">
+        <input type="text" name="search">
+        <input type="submit" value="Search" >
+      </form>
+    </br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Artist</th>
+          <th>City</th>
+          <th>State</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @upcoming_concerts.each do |concert| %>
+        <tr>
+          <td><a href = 'concerts/<%=concert.id %>'><%= concert.title %></a></td>
+          <td><%= concert.start.strftime("%I:%M") %></td>
+          <td><%= concert.end.strftime("%I:%M") %></td>
+          <td><%= concert.artist %></td>
+          <td><%= concert.city %></td>
+          <td><%= concert.state %></td>
+          <% if !current_user.nil? %>
+          <% if current_user.has_role? :admin %>
+          <td><%= link_to 'Edit', edit_concert_path(concert) %></td>
+          <td><%= link_to 'Destroy', concert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <h3 class="dashheader"> Your Profile Pictures</h3>
+      <%=render_gallery_for @pictures%>
+    </div>
+  </div>

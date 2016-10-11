@@ -18,4 +18,5 @@
 //= require bootstrap
 //= require chosen-jquery
 //= require messages
+//= require concerts
 //= require_tree .

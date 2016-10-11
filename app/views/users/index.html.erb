@@ -20,7 +20,7 @@
 <table class = "table">
   <thead>
       <tr>
-        <th></th>
+        <th>Profile Picture</th>
         <th>Name</th>
         <th>Location</th>
         <th> Artists</th>
@@ -29,16 +29,17 @@
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <% if !user.avatar_file_name.nil? %>
-        <td><%= image_tag(user.avatar.url(:thumb)) %></td>
-        <%else%>
-        <td>
-        </td>
-      <%end%>
+      <td><% if !user.avatar_file_name.nil? %>
+        <%= image_tag(user.avatar.url(:thumb)) %>
+      <% end %> </td>
       <td><a href='users/<%=user.id%>'><%= user.first_name%> <%= user.last_name%></a>
       </td>
       <td>
-        <%=user.city%>, <%=user.state%>
+        <% if user.city.present? && user.state.present? %>
+          <% if !user.city.nil? || !user.state.nil? %>
+            <%= [user.city, user.state].join(', ')%>
+          <% end %>
+        <% end %>
       </td>
 
       <td><%=user.artists%></td>

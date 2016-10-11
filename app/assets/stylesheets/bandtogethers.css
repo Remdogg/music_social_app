@@ -5,6 +5,9 @@
 
 }
 
+.bandtogether-pic {
+  padding: 20px 20px 20px 20px;
+}
 
 .title > h2{
   text-align: center;
@@ -15,8 +18,4 @@
 .invite-join-buttons {
   float:left;
   margin: 5px;
-}
-
-.bandtogether-pic {
-  margin-top: 10px;
 }
