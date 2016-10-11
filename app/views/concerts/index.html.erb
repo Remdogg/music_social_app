@@ -2,7 +2,7 @@
 
 <div class="row">
 
-
+<% if current_user.nil? %>
 <div class="jumbotron">
     <div class="jumbo col-sm-5">
       <h1>Bandtogether</h1>
@@ -33,6 +33,22 @@
   </div>
 </div>
 </div>
+<%else%>
+
+
+<div class="jumbotron signed_in_jumbo">
+    <div class="jumbo col-sm-5">
+      <div class="jumbo col-sm-5">
+        <h1>Concerts</h1>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+<%end%>
 
 <div class="container">
 
@@ -82,15 +98,16 @@
           <% end %>
         </tbody>
       </table>
+      <% if !current_user.nil? %>
+      <% if current_user.has_role? :admin %>
+      <%= link_to 'New Concert', new_concert_path %>
+      <% end %>
+      <% end %>
     </div>
 
     <br>
 
-    <% if !current_user.nil? %>
-    <% if current_user.has_role? :admin %>
-    <%= link_to 'New Concert', new_concert_path %>
-    <% end %>
-    <% end %>
+
   </div>
 
   <div class="col-sm-6">
