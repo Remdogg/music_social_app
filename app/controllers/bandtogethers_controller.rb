@@ -9,7 +9,6 @@ class BandtogethersController < ApplicationController
   # GET /bandtogethers.json
   def index
     @bandtogethers = Bandtogether.all
-
   end
 
   # GET /bandtogethers/1
@@ -32,7 +31,7 @@ class BandtogethersController < ApplicationController
   def new
     if user_signed_in?
       @bandtogether = Bandtogether.new
-      @concerts_for_select = Concert.all.map do |concert|
+      @upcoming_concerts_for_select = Concert.where("start > ?", Time.now).all.map do |concert|
       [concert.title, concert.id]
       end
       @bandtogether.concert = Concert.first
@@ -44,7 +43,7 @@ class BandtogethersController < ApplicationController
   def edit
       @bandtogether = Bandtogether.find(params[:id])
     if @bandtogether.organizer_id == current_user.id
-      @concerts_for_select = Concert.all.map do |concert|
+      @upcoming_concerts_for_select = Concert.where("start > ?", Time.now).all.map do |concert|
         [concert.title, concert.id]
       end
       @bandtogether.concert = Concert.first
@@ -58,7 +57,7 @@ class BandtogethersController < ApplicationController
   def create
     @bandtogether = Bandtogether.new(bandtogether_params)
     @bandtogether.organizer_id = current_user.id
-    @concerts_for_select = Concert.all.map do |concert|
+    @upcoming_concerts_for_select = Concert.where("start > ?", Time.now).all.map do |concert|
       [concert.title, concert.id]
     end
 
