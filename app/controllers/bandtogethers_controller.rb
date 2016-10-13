@@ -42,7 +42,7 @@ class BandtogethersController < ApplicationController
   # GET /bandtogethers/1/edit
   def edit
       @bandtogether = Bandtogether.find(params[:id])
-    if @bandtogether.organizer_id == current_user.id
+    if @bandtogether.organizer_id == current_user.id || current_user.has_role?(:admin)
       @upcoming_concerts_for_select = Concert.where("start > ?", Time.now).all.map do |concert|
         [concert.title, concert.id]
       end

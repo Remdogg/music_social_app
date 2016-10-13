@@ -20,11 +20,15 @@
   <div class="col-sm-6">
     <div class="well textcenter scrollbaractivity">
       <h3 class="dashheader"> Activity Feed </h3>
+      <% if !@activities.nil? %>
       <% @activities.each do |activity| %>
+      <% if activity.trackable %>
       <div class="activity">
         <%= link_to activity.owner.first_name, activity.owner if activity.owner%>
         <%= render_activity activity %>
       </div>
+      <% end%>
+      <% end %>
       <% end %>
       </div>
     </div>

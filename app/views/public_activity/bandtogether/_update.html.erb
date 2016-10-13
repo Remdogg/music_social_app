@@ -1,8 +1,10 @@
+
+<% if activity.trackable%>
 updated <%= link_to activity.trackable.title, activity.trackable %> for
+<%end%>
 
 <% if activity.trackable %>
+
   <%= link_to activity.trackable.concert.title, activity.trackable.concert %>
 
-<% else %>
-  which has since been removed
 <% end %>
