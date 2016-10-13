@@ -1,1 +1,3 @@
-added bandtogether to <%= link_to activity.trackable.concert.title, activity.trackable.concert %>
+<% if !activity.trackable.nil?%>
+added bandtogether to <%= link_to activity.trackable.title, activity.trackable %>
+<% end %>
