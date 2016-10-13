@@ -1,6 +1,6 @@
 <% provide(:title, @title) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-2 panel panel-default">
     <section class="user_info">
       <h1><%= @user.first_name %></h1>
     </section>
@@ -8,13 +8,13 @@
       <%= render 'shared/stats' %>
     </section>
   </aside>
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
+  <div class="col-md-10">
+    <h1><%= @title %></h1>
     <table>
       <tbody>
         <% @user.followers.each do |follower| %>
         <tr>
-          <td><a href="/users/<%=follower.id%>"> <%=follower.first_name%> <%=follower.last_name%> </a></td>
+          <td><h4><a href="/users/<%=follower.id%>"> <%=follower.first_name%> <%=follower.last_name%> </a></h4></td>
         </tr>
         <% end %>
 
