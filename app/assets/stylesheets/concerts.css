@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/*/
 
 .jumbotron {
-  background-image: url('jumbotron.jpg');
+  <%= asset_path:('jumbotron.jpg') %>
   background-position: center;
   background-size: cover;
   width: 100%;
