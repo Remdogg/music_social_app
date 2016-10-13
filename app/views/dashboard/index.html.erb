@@ -1,5 +1,6 @@
-
+<div id="backgroundimg">
 <p id="notice"><%= notice %></p>
+
 
 <div class="dash-name">
   <h2>Welcome, <%=current_user.first_name%>! </h2>
@@ -16,8 +17,7 @@
   </div>
 
 <div class="row">
-  <div class="col-sm-1"></div>
-  <div class="col-sm-5">
+  <div class="col-sm-6">
     <div class="well textcenter scrollbaractivity">
       <h3 class="dashheader"> Activity Feed </h3>
       <% @activities.each do |activity| %>
@@ -28,8 +28,7 @@
       <% end %>
       </div>
     </div>
-
-    <div class="col-sm-5 panel panel-default textcenter scrollbarb2g">
+    <div class="col-sm-6 panel panel-default textcenter scrollbarb2g">
       <h3 class="dashheader">Your Upcoming Bandtogethers</h3>
       <br>
       <% @bandtogethers.each do |bandtogether| %>
@@ -41,17 +40,16 @@
         <%= Membership.where(bandtogether_id: bandtogether.id).count + 1 %></p>
         <% end %>
     </div>
-    <div class="col-sm-1"></div>
   </div>
 
     <div class="row">
-      <div class="col-sm-5 panel panel-default center-block">
+      <div class="col-sm-4 panel panel-default center-block">
         <h3 class="dashheader">Create a New Bandtogether</h3>
         <%= render '/bandtogethers/form' %>
           </div>
           <div class="col-sm-1"></div>
 
-      <div class="col-sm-6 well">
+      <div class="col-sm-7 well">
       <h3 class="dashheader">Upcoming Concerts</h3>
       <br>
       <form action="/concerts" method="get">
@@ -100,3 +98,4 @@
       <%=render_gallery_for @pictures%>
     </div>
   </div>
+</div>

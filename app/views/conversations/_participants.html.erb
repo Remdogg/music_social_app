@@ -1,5 +1,7 @@
 <% conversation.participants.each do |participant| %>
   <% unless participant == current_user %>
+    <% if !participant.avatar_file_name.nil? %>
     <%= image_tag(participant.avatar.url(:thumb)) %>
+    <% end %>
   <% end %>
 <% end %>
