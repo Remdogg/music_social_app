@@ -1,28 +1,15 @@
-== README
+This Ruby on Rails app was our final project at Learn Academy. It was created by four students over the course of two and a half weeks. The purpose of Bandtogether is to create local communities of music-lovers by allowing people to 'bandtogether' around concerts, whether that be through carpooling, eating together, or generally hanging out before or after shows. Some of the features we implemented to create connections between 'bandies' are an in-app messaging system, joining and inviting people to events, a follow/following system, and a map to find events in your area.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Some of the features included are:
 
-Things you may want to cover:
+Google Maps API that shows your location and concerts near you, as well as individual maps for events
+Comments on bandtogethers using the gem 'commontable'
+Facebook Authorization with OmniAuth
+Activity Feed for your friends' activity and a Dashboard page showing personalized features
+Authentication with Devise
+Paperclip for user profile pictures, as well as a personal photo gallery
+Follow/following system
+Messaging inbox and invite system
+Keyword searchable concerts and users
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Bandtogether is on Heroku, although there are some issues to be worked out with the Dashboard page and Paperclip image functionality.
